@@ -16,21 +16,15 @@ public class Main {
             
           
         int holyShockDamage = holymoly.holyShock();
-        int totalCrusaderStrikeDamage = 0;
-        // creating a for loop to demstrate the use of the crusader strike ability 5 times and then i can see if the dusk and dawn buff is working
-        for (int i = 0; i < 5; i++) {
-            int crusaderStrikeDamage = holymoly.crusaderStrike();
-            // adding the crusader strike damage to the total crusader strike damage
-            totalCrusaderStrikeDamage += crusaderStrikeDamage; 
-            System.out.println("Crusader Strike damage: " + crusaderStrikeDamage);
-            System.out.println("The Total dmg is :" + totalCrusaderStrikeDamage);
-        }
-        int JudgeMentDamage = holymoly.JudgeMent();
-        System.out.println("JudgeMent damage: " + JudgeMentDamage);
+        System.out.println("HolyShock damage: " + holyShockDamage);
+        
+        //System.out.println("JudgeMent damage: " + JudgeMentDamage);
+
+        
 
 
          
-        System.out.println("HolyShock damage: " + holyShockDamage);
+        //System.out.println("HolyShock damage: " + holyShockDamage);
        
   
 
@@ -57,6 +51,45 @@ public class Main {
             if (holyShockCharges < 2) {
                 holyShockCharges++;
             }
+        }
+        // method to calculate the damage of Consecration 
+        public int Consecration() {
+            int numberOfTicks = 18; //there are 18 ticks in the duration of the spell according to wowhead
+            double totalDamage = 0;
+        
+            // Base damage per tick calculation according to tooltip
+            double baseDamage = mainStat * 0.05;
+        
+            System.out.println("Base Damage per tick before versatility: " + baseDamage);
+        
+            // Convert versatility to a percentage increase
+            double versatilityPercent = versatility / 205.0;
+            double versatilityBonus = baseDamage * versatilityPercent / 100.0;
+        
+            // Calculate crit multiplier
+            double critMultiplier = 2.0; // 200% damage on crit
+        
+            // Loop through each tick
+            for (int i = 0; i < numberOfTicks; i++) {
+                double tickDamage = baseDamage + versatilityBonus;
+                System.out.println(tickDamage);
+        
+                // Check for critical hit
+                boolean isCriticalHit = random.nextDouble() < (critChance / 100.0);
+        
+                // Apply crit multiplier if it's a critical hit
+                if (isCriticalHit) {
+                    tickDamage *= critMultiplier;
+                }
+        
+                // the total damage
+                totalDamage += tickDamage;
+            }
+        
+            // Print the total damage 
+            System.out.println("Total Consecration damage: " + totalDamage);
+            
+            return (int) totalDamage;
         }
         // method to calculate the damage of the crusader strike ability
         public int crusaderStrike() {
