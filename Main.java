@@ -16,7 +16,9 @@ public class Main {
             
           
         int holyShockDamage = holymoly.holyShock();
+        // creating a for loop to demstrate the use of the crusader strike ability 5 times and then i can see if the dusk and dawn buff is working
         for (int i = 0; i < 5; i++) {
+            // calling the crusaderStrike method to calculate the damage and print after
             int crusaderStrikeDamage = holymoly.crusaderStrike();
             System.out.println("damage: " + crusaderStrikeDamage);
         }
