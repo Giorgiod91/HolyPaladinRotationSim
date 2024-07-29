@@ -1,6 +1,6 @@
 import java.util.Random;
 
-import java.util.Random;
+
 
 public class Main {
 
@@ -9,12 +9,24 @@ public class Main {
         Paladin holymoly = new Paladin();
         // Setting the main stat and versatility of the Paladin
         holymoly.setMainStat(19797);
-        holymoly.setVersatility(6336);
+        holymoly.setVersatility(6246);
+        holymoly.setCritChance(36);
         
         // Calling the holyShock method to calculate the damage
-        int damage = holymoly.holyShock();
-        // Printing the damage
-        System.out.println("Damage: " + damage);
+       
+      
+          
+        int holyShockDamage = holymoly.holyShock();
+        int crusaderStrikeDamage = holymoly.crusaderStrike();
+
+        
+
+
+         
+            System.out.println("damage: " + holyShockDamage);
+            System.out.println("damage: " + crusaderStrikeDamage);
+  
+
     }
 
     public static class Paladin {
@@ -23,43 +35,109 @@ public class Main {
         private int holyShockCharges = 1;
         private int mainStat;
         private int versatility;
+        private int builder = 0;
+        private int duskAndDawn = 0; // dusk and dawm buff that increases the damage of the next holy shock by 30%
+        private int critChance = 0;
+        private Random random = new Random(); // Random number generator using that one to simulate the crit chance
         
         public int getHolyShockCharges() {
             return holyShockCharges;
         }
+     
         // Method to regenerate the holyShock charges
         public void regenerateHolyShockCharge() {
             if (holyShockCharges < 2) {
                 holyShockCharges++;
             }
         }
+        // method to calculate the damage of the crusader strike ability
+        public int crusaderStrike() {
+            // add 1 to the builder cause i want to be able to keep track of the dusk and dawn buff that increases the damage of the next holy shock by 30% if u used 3 builders and crusader strike is a builder
+            builder += 1;
+            if (builder == 3) {
+                duskAndDawn += 1;
+                builder = 0;
+            }
+            if (duskAndDawn == 1) {
+                mainStat = (int) (mainStat * 1.3);
+            }
+            // Calculate base damage as 107.1% of mainStat
+            int baseDamage = (int) (mainStat * 1.071);
+            System.out.println("Base Damage: " + baseDamage);
+            holyPower += 1; // Gain Holy Power
+            
+            // Convert versatility to percentage versatility has the value of 205 so we divide it by 205 to get the percentage
+            double versatilityPercent = versatility / 205.0; 
+            int roundedVersatilityAsInt = (int) Math.round(versatilityPercent);
+            
+            // Convert crit chance to a fraction
+            double critChancePossibility = critChance / 100.0; // Use 100 for percentage
+            
+            // Calculate versatility bonus damage based on rounded value
+            double versatilityBonus = baseDamage / 100.0 * roundedVersatilityAsInt;
+            
+            // Calculate crit bonus damage
+            double critDamageMultiplier = 2.0; // 200% damage on crit
+            double normalDamage = baseDamage + versatilityBonus;
+            double critBonus = (baseDamage + versatilityBonus) * critDamageMultiplier;
+            
+            // Use randomness to determine if it's a critical hit
+            boolean isCriticalHit = random.nextDouble() < critChancePossibility;
+            double totalDamage = isCriticalHit ? critBonus : normalDamage;
+            System.out.println("Critical Hit: " + isCriticalHit);
+            // return the total damage
+            return (int) totalDamage;
+        }
+  
+        
+        
+        
+        
+        
+        
         // Method to calculate the damage of the holyShock ability
+      
         public int holyShock() {
+
             if (holyShockCharges <= 0) {
                 return 0; // No charges available
             }
-
+        
             int baseDamage = (int) (mainStat * 1.2);
-            System.out.println("Base Damage: " + baseDamage);
             holyPower += 1; // Gain Holy Power
             holyShockCharges -= 1; // Consume a charge
             
-
-            // Convert versatility to percentage
-            double versatilityPercent = versatility / 205.0; // 205.0 = 30.9%
-            // round to 2 decimal places
+            // Convert versatility to percentage versatility has the value of 205 so we divide it by 205 to get the percentage
+            double versatilityPercent = versatility / 205.0; 
             int roundedValueAsInt = (int) Math.round(versatilityPercent);
-            System.out.println("Versatility Percent: " + roundedValueAsInt);
-            // calculate versatility bonus damage based on rounded value so we can apply it to the base damage
-            double versatilityBonus = baseDamage / 100 * roundedValueAsInt;
-
-            // Apply versatility bonus
-            double totalDamage = versatilityBonus + baseDamage;
-            System.out.println("baseDamage: " + baseDamage);
-            // return the total damage
-    
+            
+            // calculate the crit chance  and set it to a double named critChancePossiblility
+            double critChancePossiblility = critChance / 100.0; 
+        
+            // Calculate versatility bonus damage based on rounded value
+            double versatilityBonus = baseDamage / 100.0 * roundedValueAsInt;
+        
+            // Calculate crit bonus damage
+            double critDamageMultiplier = 2.0; // 200% damage on crit
+            double normalDamage = baseDamage + versatilityBonus;
+            double critBonus = (baseDamage + versatilityBonus) * critDamageMultiplier;
+        
+            // Use randomness to determine if it's a critical hit
+            boolean isCriticalHit = random.nextDouble() < critChancePossiblility;
+            double totalDamage = isCriticalHit ? critBonus : normalDamage;
+            System.out.println("crit: " + isCriticalHit);
+        
             return (int) totalDamage;
-           
+        }
+        // method to calculate the damage of Judgment ability
+        // ::TODO:: Implement the Judgment ability
+        public int JudgeMent() {
+            int baseDamage = (int) (mainStat * 1.2);
+            holyPower += 1; // Gain Holy Power
+
+            double totalDamage = baseDamage;
+
+            return (int) totalDamage;
         }
 
         public int getHolyPower() {
@@ -74,6 +152,10 @@ public class Main {
         // Method to set versatility
         public void setVersatility(int versatility) {
             this.versatility = versatility;
+        }
+        // Method to set crit chance
+        public void setCritChance(int critChance) {
+            this.critChance = critChance;
         }
     }
 }
