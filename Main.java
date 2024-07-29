@@ -111,8 +111,8 @@ public class Main {
             }
         
             int baseDamage = (int) (mainStat * 1.2);
-            holyPower += 1; // Gain Holy Power
-            holyShockCharges -= 1; // Consume a charge
+            holyPower += 1; // Gain Holy Power cause its a builder
+            holyShockCharges -= 1; // Consume a charge of Holy Shock on use 
             
             // Convert versatility to percentage versatility has the value of 205 so we divide it by 205 to get the percentage
             double versatilityPercent = versatility / 205.0; 
@@ -139,8 +139,15 @@ public class Main {
         // method to calculate the damage of Judgment ability
         // ::TODO:: Implement the Judgment ability
         public int JudgeMent() {
+             // add 1 to the builder cause i want to be able to keep track of the dusk and dawn buff that increases the damage of the next holypower spender by 30% if u used 3 builders and Judgement is a builder
+             builder += 1;
+             // if statement to check if the builder is equal to 3 then add 1 to the dusk and dawn buff and set the builder to 0
+             if (builder >= 3) {
+                 duskAndDawn = 1;
+                 builder = 0;
+             }
             int baseDamage = (int) (mainStat * 1.2);
-            holyPower += 1; // Gain Holy Power
+            holyPower += 1; // Gain Holy Power cause its a builder 
 
             double totalDamage = baseDamage;
 
