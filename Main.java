@@ -16,17 +16,21 @@ public class Main {
             
           
         int holyShockDamage = holymoly.holyShock();
+        int totalCrusaderStrikeDamage = 0;
         // creating a for loop to demstrate the use of the crusader strike ability 5 times and then i can see if the dusk and dawn buff is working
         for (int i = 0; i < 5; i++) {
-            // calling the crusaderStrike method to calculate the damage and print after
             int crusaderStrikeDamage = holymoly.crusaderStrike();
-            System.out.println("damage: " + crusaderStrikeDamage);
+            // adding the crusader strike damage to the total crusader strike damage
+            totalCrusaderStrikeDamage += crusaderStrikeDamage; 
+            System.out.println("Crusader Strike damage: " + crusaderStrikeDamage);
+            System.out.println("The Total dmg is :" + totalCrusaderStrikeDamage);
         }
-       
+        int JudgeMentDamage = holymoly.JudgeMent();
+        System.out.println("JudgeMent damage: " + JudgeMentDamage);
 
 
          
-        System.out.println("damage: " + holyShockDamage);
+        System.out.println("HolyShock damage: " + holyShockDamage);
        
   
 
@@ -144,12 +148,31 @@ public class Main {
                  duskAndDawn = 1;
                  builder = 0;
              }
-            int baseDamage = (int) (mainStat * 1.2);
+            int baseDamage = (int) (mainStat * 1.125);
             holyPower += 1; // Gain Holy Power cause its a builder 
 
-            double totalDamage = baseDamage;
+              // Convert versatility to percentage versatility has the value of 205 so we divide it by 205 to get the percentage
+              double versatilityPercent = versatility / 205.0; 
+              int roundedValueAsInt = (int) Math.round(versatilityPercent);
+              
+              // calculate the crit chance  and set it to a double named critChancePossiblility
+              double critChancePossiblility = critChance / 100.0; 
+          
+              // Calculate versatility bonus damage based on rounded value
+              double versatilityBonus = baseDamage / 100.0 * roundedValueAsInt;
+          
+              // Calculate crit bonus damage
+              double critDamageMultiplier = 2.0; // 200% damage on crit cause crits does 200% damage in world of warcraft
+              double normalDamage = baseDamage + versatilityBonus;
+              double critBonus = (baseDamage + versatilityBonus) * critDamageMultiplier;
+          
+              // Use randomness to determine if it's a critical hit
+              boolean isCriticalHit = random.nextDouble() < critChancePossiblility;
+              double totalDamage = isCriticalHit ? critBonus : normalDamage;
+              System.out.println("crit: " + isCriticalHit);
 
-            return (int) totalDamage;
+
+              return (int) totalDamage;
         }
 
         public int getHolyPower() {
