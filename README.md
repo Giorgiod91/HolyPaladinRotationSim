@@ -2,3 +2,4 @@
 
 ![Screenshot 2024-07-29 035738](https://github.com/user-attachments/assets/8d744f2e-7fd7-4fe8-997e-036dadf30910)
 
+- trying to comment every method and variable i use that others later can understand the code
