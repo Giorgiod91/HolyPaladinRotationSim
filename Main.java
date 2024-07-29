@@ -65,20 +65,20 @@ public class Main {
             // Calculate base damage as 107.1% of mainStat
             int baseDamage = (int) (mainStat * 1.071);
             System.out.println("Base Damage: " + baseDamage);
-            holyPower += 1; // Gain Holy Power
+            holyPower += 1; // Gain Holy Power cause its a builder
             
-            // Convert versatility to percentage versatility has the value of 205 so we divide it by 205 to get the percentage
+            // Convert versatility to percentage versatility has the value of 205 ind world of warcraft so we divide it by 205 to get the percentage
             double versatilityPercent = versatility / 205.0; 
             int roundedVersatilityAsInt = (int) Math.round(versatilityPercent);
             
-            // Convert crit chance to a fraction
-            double critChancePossibility = critChance / 100.0; // Use 100 for percentage
+            // Convert crit chance to percentage 
+            double critChancePossibility = critChance / 100.0; 
             
             // Calculate versatility bonus damage based on rounded value
             double versatilityBonus = baseDamage / 100.0 * roundedVersatilityAsInt;
             
             // Calculate crit bonus damage
-            double critDamageMultiplier = 2.0; // 200% damage on crit
+            double critDamageMultiplier = 2.0; // 200% damage on crit cause crits does 200% damage in world of warcraft
             double normalDamage = baseDamage + versatilityBonus;
             double critBonus = (baseDamage + versatilityBonus) * critDamageMultiplier;
             
@@ -95,11 +95,7 @@ public class Main {
             // return the total damage
             return (int) totalDamage;
         }
-  
-        
-        
-        
-        
+      
         
         
         // Method to calculate the damage of the holyShock ability
@@ -125,7 +121,7 @@ public class Main {
             double versatilityBonus = baseDamage / 100.0 * roundedValueAsInt;
         
             // Calculate crit bonus damage
-            double critDamageMultiplier = 2.0; // 200% damage on crit
+            double critDamageMultiplier = 2.0; // 200% damage on crit cause crits does 200% damage in world of warcraft
             double normalDamage = baseDamage + versatilityBonus;
             double critBonus = (baseDamage + versatilityBonus) * critDamageMultiplier;
         
