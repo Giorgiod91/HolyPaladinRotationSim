@@ -54,10 +54,12 @@ public class Main {
         public int crusaderStrike() {
             // add 1 to the builder cause i want to be able to keep track of the dusk and dawn buff that increases the damage of the next holy shock by 30% if u used 3 builders and crusader strike is a builder
             builder += 1;
+            // if statement to check if the builder is equal to 3 then add 1 to the dusk and dawn buff and set the builder to 0
             if (builder == 3) {
                 duskAndDawn += 1;
                 builder = 0;
             }
+            // if statement to check if the dusk and dawn buff is equal to 1 then multiply the main stat by 1.3 thats what the buff does
             if (duskAndDawn == 1) {
                 mainStat = (int) (mainStat * 1.3);
             }
