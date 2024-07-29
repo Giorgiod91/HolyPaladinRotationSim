@@ -13,21 +13,23 @@ public class Main {
         holymoly.setCritChance(36);
         
         // Calling the holyShock method to calculate the damage
-       
-      
+            
           
         int holyShockDamage = holymoly.holyShock();
-        int crusaderStrikeDamage = holymoly.crusaderStrike();
-
-        
+        for (int i = 0; i < 5; i++) {
+            int crusaderStrikeDamage = holymoly.crusaderStrike();
+            System.out.println("damage: " + crusaderStrikeDamage);
+        }
+       
 
 
          
-            System.out.println("damage: " + holyShockDamage);
-            System.out.println("damage: " + crusaderStrikeDamage);
+        System.out.println("damage: " + holyShockDamage);
+       
   
 
     }
+    //::TODO::Implement the dawm and dusk buff that increases the damage of the next holy shock by 30%  if there are 3 builders used
 
     public static class Paladin {
         // Declaring variables for the Paladin class 
@@ -55,14 +57,11 @@ public class Main {
             // add 1 to the builder cause i want to be able to keep track of the dusk and dawn buff that increases the damage of the next holy shock by 30% if u used 3 builders and crusader strike is a builder
             builder += 1;
             // if statement to check if the builder is equal to 3 then add 1 to the dusk and dawn buff and set the builder to 0
-            if (builder == 3) {
-                duskAndDawn += 1;
+            if (builder >= 3) {
+                duskAndDawn = 1;
                 builder = 0;
             }
-            // if statement to check if the dusk and dawn buff is equal to 1 then multiply the main stat by 1.3 thats what the buff does
-            if (duskAndDawn == 1) {
-                mainStat = (int) (mainStat * 1.3);
-            }
+          
             // Calculate base damage as 107.1% of mainStat
             int baseDamage = (int) (mainStat * 1.071);
             System.out.println("Base Damage: " + baseDamage);
@@ -86,6 +85,12 @@ public class Main {
             // Use randomness to determine if it's a critical hit
             boolean isCriticalHit = random.nextDouble() < critChancePossibility;
             double totalDamage = isCriticalHit ? critBonus : normalDamage;
+             // Apply Dusk and Dawn buff if active
+            if (duskAndDawn == 1) {
+                totalDamage *= 1.3; // Apply 30% additional damage
+                duskAndDawn = 0; // Reset buff after use
+                }
+          
             System.out.println("Critical Hit: " + isCriticalHit);
             // return the total damage
             return (int) totalDamage;
