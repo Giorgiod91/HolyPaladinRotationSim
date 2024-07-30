@@ -17,6 +17,7 @@ public class Main {
          System.out.println("Testing Crusader Strike:");
          for (int i = 0; i < 3; i++) {
              int crusaderStrikeDamage = holymoly.crusaderStrike();
+             System.out.println("Current Holy Power: " + holymoly.getHolyPower());
              System.out.println("Crusader Strike damage: " + crusaderStrikeDamage);
          }
          
@@ -49,6 +50,9 @@ public static class Paladin {
 
     public int getHolyShockCharges() {
         return holyShockCharges;
+    }
+    public int getHolyPower() {
+        return holyPower;
     }
 
     public void regenerateHolyShockCharge() {
