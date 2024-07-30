@@ -1,21 +1,19 @@
 import java.util.Random;
 
 
-
-
 public class Main {
 
     public static void main(String[] args) { 
         // Creating a new Paladin instance
         Paladin holymoly = new Paladin();
-        // Setting the main stat and versatility of the Paladin
+        // Setting the main stat, versatility and crit of the Paladin
         holymoly.setMainStat(19797);
         holymoly.setVersatility(6246);
         holymoly.setCritChance(36);
         
          // Testing Crusader Strike to build Holy Power and potentially activate Dusk and Dawn
          System.out.println("Testing Crusader Strike:");
-         for (int i = 0; i < 3; i++) {
+         for (int i = 0; i < 9; i++) {
              int crusaderStrikeDamage = holymoly.crusaderStrike();
              System.out.println("Current Holy Power: " + holymoly.getHolyPower());
              System.out.println("Crusader Strike damage: " + crusaderStrikeDamage);
@@ -23,8 +21,12 @@ public class Main {
          
          // Now test Shield of the Righteous with enough Holy Power
          System.out.println("\nTesting Shield of the Righteous:");
-         int shieldOfRighteousDamage = holymoly.ShieldOfRighteous();
-         System.out.println("Shield of the Righteous damage: " + shieldOfRighteousDamage);
+         for (int i= 0; i < 3; i++) {
+            int shieldOfRighteousDamage = holymoly.ShieldOfRighteous();
+            System.out.println("Shield of the Righteous damage: " + shieldOfRighteousDamage);
+
+         }
+ 
  
          // Test Holy Shock
          System.out.println("\nTesting Holy Shock:");
@@ -62,6 +64,7 @@ public static class Paladin {
     }
 
     public int ShieldOfRighteous() {
+        
         if (holyPower < 3) {
             System.out.println("Not enough Holy Power!");
             return 0;
@@ -113,7 +116,7 @@ public static class Paladin {
         builderCount += 1;
 
         // Check if we have used 3 builders
-        if (builderCount >= 3) {
+        if (builderCount == 3) {
             duskAndDawnActive = true; // Activate Dusk and Dawn buff
             builderCount = 0; // Reset builder count
         }
@@ -166,11 +169,7 @@ public static class Paladin {
         double critMultiplier = random.nextDouble() < (critChance / 100.0) ? 2.0 : 1.0;
         double totalDamage = (baseDamage + versatilityBonus) * critMultiplier;
 
-        if (duskAndDawnActive) {
-            totalDamage *= 1.3; // Apply 30% additional damage
-            duskAndDawnActive = false; // Reset buff after use
-        }
-
+       
         return totalDamage;
     }
 
