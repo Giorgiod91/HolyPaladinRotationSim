@@ -46,6 +46,10 @@ public class Main {
          System.out.println("\nTesting Judgment:");
          int judgmentDamage = holymoly.JudgeMent();
          System.out.println("Judgment damage: " + judgmentDamage);
+
+         // showing overall dmg
+
+         System.out.println("Overall dmg :" +holymoly.OverAllDamage());
   
 
     }
@@ -59,6 +63,8 @@ public static class Paladin {
     private int critChance = 0;
     private Random random = new Random();
     private boolean consecrationActive = false;
+    private int totalDamageOne = 0;
+    
 
     public int getHolyShockCharges() {
         return holyShockCharges;
@@ -71,6 +77,10 @@ public static class Paladin {
         if (holyShockCharges < 2) {
             holyShockCharges++;
         }
+    }
+
+    public int OverAllDamage() {
+        return totalDamageOne;
     }
 
 
@@ -104,6 +114,10 @@ public static class Paladin {
 
         // Apply versatility and crit modifiers
         totalDamage = applyVersatilityAndCrit(totalDamage);
+
+        // adding the number to the TotalDamageOne variable to later be able to give out the overall dmg number
+
+        totalDamageOne += (int) totalDamage;
         
         System.out.println("Shield of the Righteous damage: " + totalDamage);
         return (int) totalDamage;
@@ -130,6 +144,8 @@ public static class Paladin {
         }
 
         System.out.println("Total Consecration damage: " + totalDamage);
+        // add to totaldamageone 
+        totalDamageOne += (int) totalDamage;
         return (int) totalDamage;
     }
 
@@ -147,6 +163,8 @@ public static class Paladin {
         double totalDamage = applyVersatilityAndCrit(baseDamage);
 
         System.out.println("Crusader Strike damage: " + totalDamage);
+        // add dmg to totaldamageone
+        totalDamageOne += (int) totalDamage;
         return (int) totalDamage;
     }
 
@@ -168,6 +186,8 @@ public static class Paladin {
 
         double totalDamage = applyVersatilityAndCrit(baseDamage);
         System.out.println("Holy Shock damage: " + totalDamage);
+        // adding dmg to totaldamageone
+        totalDamageOne += (int) totalDamage;
         return (int) totalDamage;
     }
 
@@ -183,6 +203,8 @@ public static class Paladin {
 
         double totalDamage = applyVersatilityAndCrit(baseDamage);
         System.out.println("Judgment damage: " + totalDamage);
+        // adding to totaldamageone
+        totalDamageOne += (int) totalDamage;
         return (int) totalDamage;
     }
 
