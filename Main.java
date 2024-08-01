@@ -18,6 +18,13 @@ public class Main {
              System.out.println("Current Holy Power: " + holymoly.getHolyPower());
              System.out.println("Crusader Strike damage: " + crusaderStrikeDamage);
          }
+
+            // simulation consecration dmg 
+            for(int i=0; i<5; i++) {
+                int consecrationDamage = holymoly.Consecration();
+                System.out.println(consecrationDamage);
+            }
+    
          
          // Now test Shield of the Righteous with enough Holy Power
          System.out.println("\nTesting Shield of the Righteous:");
@@ -26,6 +33,8 @@ public class Main {
             System.out.println("Shield of the Righteous damage: " + shieldOfRighteousDamage);
 
          }
+      
+      
  
  
          // Test Holy Shock
@@ -49,6 +58,7 @@ public static class Paladin {
     private boolean duskAndDawnActive = false; // Indicates if the buff is active
     private int critChance = 0;
     private Random random = new Random();
+    private boolean consecrationActive = false;
 
     public int getHolyShockCharges() {
         return holyShockCharges;
@@ -63,17 +73,28 @@ public static class Paladin {
         }
     }
 
+
     public int ShieldOfRighteous() {
         
         if (holyPower < 3) {
             System.out.println("Not enough Holy Power!");
             return 0;
         }
+        // checking if consecration is active cause that gives u 20% increased dmg on ShiledOfTheRighteous
 
+       
         double baseDamage = mainStat * 1.28;
         holyPower -= 3; // Consumes 3 Holy Power to use SoR
 
+        if(consecrationActive) {
+            baseDamage = baseDamage *1.2;
+            System.out.println("20% increased dmg active ");
+        }
+
         double totalDamage = baseDamage;
+
+     
+
         
         // Apply Dusk and Dawn buff if active
         if (duskAndDawnActive) {
@@ -91,6 +112,8 @@ public static class Paladin {
     public int Consecration() {
         int numberOfTicks = 18;
         double totalDamage = 0;
+
+        consecrationActive = true;
 
         double baseDamage = mainStat * 0.05;
         double versatilityPercent = versatility / 205.0;
