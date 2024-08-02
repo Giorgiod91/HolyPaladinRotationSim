@@ -1,4 +1,6 @@
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class Main {
@@ -50,9 +52,27 @@ public class Main {
          // showing overall dmg
 
          System.out.println("Overall dmg :" +holymoly.OverAllDamage());
-  
+         // starting timer 
+         holymoly.StartTimer();
+         // testing rotation method with 60 seconds dps rotation
 
-    }
+         Timer testTimer = new Timer();
+         testTimer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                holymoly.basicRotation();
+                System.out.println("Time is :" + holymoly.getTime());
+                System.out.println("The Overall Dmg is :" + holymoly.OverAllDamage());
+                // dividing time by overall dmg to display the actual DPS u do so the damage per second
+                System.out.println("DPS damage per second :" + holymoly.OverAllDamage() / holymoly.getTime());
+                if(holymoly.getTime() > 10) {
+                    testTimer.cancel();
+                }
+            }
+                     
+              }, 0 ,1000);
+            }
+            
+                
 public static class Paladin {
     private int holyPower = 0;
     private int holyShockCharges = 1;
@@ -64,6 +84,7 @@ public static class Paladin {
     private Random random = new Random();
     private boolean consecrationActive = false;
     private int totalDamageOne = 0;
+    private int Time =0;
     
 
     public int getHolyShockCharges() {
@@ -80,8 +101,41 @@ public static class Paladin {
     }
 
     public int OverAllDamage() {
-        return totalDamageOne;
+        return totalDamageOne;}
+    public int getTime() {
+            return Time;
+        }
+    
+    // using the java timer to track the seconds 
+    public void StartTimer() {
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                Time++;
+             
+            }
+        }, 0, 1000);
+        
     }
+    public void basicRotation() {
+        int maxRotations = 0;
+        for(int i = 0; i< 3; i++){
+            if(Time  % 12 == 0 && Time >0  && maxRotations <= 4){
+            Consecration();
+            maxRotations++;
+        
+
+            }
+        }
+                JudgeMent();
+        holyShock();
+        ShieldOfRighteous();
+
+       
+               
+    
+    }
+   
 
 
     public int ShieldOfRighteous() {
@@ -218,6 +272,7 @@ public static class Paladin {
         return totalDamage;
     }
 
+  
     public void setMainStat(int mainStat) { this.mainStat = mainStat; }
     public void setVersatility(int versatility) { this.versatility = versatility; }
     public void setCritChance(int critChance) { this.critChance = critChance; }
