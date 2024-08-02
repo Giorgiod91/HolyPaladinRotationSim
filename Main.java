@@ -14,44 +14,44 @@ public class Main {
         holymoly.setCritChance(36);
         
          // Testing Crusader Strike to build Holy Power and potentially activate Dusk and Dawn
-         System.out.println("Testing Crusader Strike:");
-         for (int i = 0; i < 9; i++) {
-             int crusaderStrikeDamage = holymoly.crusaderStrike();
-             System.out.println("Current Holy Power: " + holymoly.getHolyPower());
-             System.out.println("Crusader Strike damage: " + crusaderStrikeDamage);
-         }
+        // System.out.println("Testing Crusader Strike:");
+        // for (int i = 0; i < 9; i++) {
+          //   int crusaderStrikeDamage = holymoly.crusaderStrike();
+           //  System.out.println("Current Holy Power: " + holymoly.getHolyPower());
+           //  System.out.println("Crusader Strike damage: " + crusaderStrikeDamage);
+        // }
 
             // simulation consecration dmg 
-            for(int i=0; i<5; i++) {
+          //  for(int i=0; i<5; i++) {
                 int consecrationDamage = holymoly.Consecration();
                 System.out.println(consecrationDamage);
-            }
+           // }
     
          
          // Now test Shield of the Righteous with enough Holy Power
-         System.out.println("\nTesting Shield of the Righteous:");
-         for (int i= 0; i < 3; i++) {
-            int shieldOfRighteousDamage = holymoly.ShieldOfRighteous();
-            System.out.println("Shield of the Righteous damage: " + shieldOfRighteousDamage);
+       //  System.out.println("\nTesting Shield of the Righteous:");
+        // for (int i= 0; i < 3; i++) {
+          //  int shieldOfRighteousDamage = holymoly.ShieldOfRighteous();
+           // System.out.println("Shield of the Righteous damage: " + shieldOfRighteousDamage);
 
-         }
+        // }
       
       
  
  
          // Test Holy Shock
-         System.out.println("\nTesting Holy Shock:");
-         int holyShockDamage = holymoly.holyShock();
-         System.out.println("Holy Shock damage: " + holyShockDamage);
+        // System.out.println("\nTesting Holy Shock:");
+        // int holyShockDamage = holymoly.holyShock();
+        // System.out.println("Holy Shock damage: " + holyShockDamage);
  
          // Test Judgment
-         System.out.println("\nTesting Judgment:");
-         int judgmentDamage = holymoly.JudgeMent();
-         System.out.println("Judgment damage: " + judgmentDamage);
+        // System.out.println("\nTesting Judgment:");
+        // int judgmentDamage = holymoly.JudgeMent();
+        // System.out.println("Judgment damage: " + judgmentDamage);
 
          // showing overall dmg
 
-         System.out.println("Overall dmg :" +holymoly.OverAllDamage());
+        // System.out.println("Overall dmg :" +holymoly.OverAllDamage());
          // starting timer 
          holymoly.StartTimer();
          // testing rotation method with 60 seconds dps rotation
@@ -101,7 +101,9 @@ public static class Paladin {
     }
 
     public int OverAllDamage() {
-        return totalDamageOne;}
+        return totalDamageOne;
+    }
+
     public int getTime() {
             return Time;
         }
@@ -146,7 +148,7 @@ public static class Paladin {
         }
         // checking if consecration is active cause that gives u 20% increased dmg on ShiledOfTheRighteous
 
-       
+        
         double baseDamage = mainStat * 1.28;
         holyPower -= 3; // Consumes 3 Holy Power to use SoR
 
