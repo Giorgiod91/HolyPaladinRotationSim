@@ -224,6 +224,10 @@ public static class Paladin {
         return (int) totalDamage;
     }
 
+    public int SunsAvatarPassive() {
+        int basicDamage = 13463;
+    }
+
     public int holyShock() {
         if (holyShockCharges <= 0) {
             return 0;
