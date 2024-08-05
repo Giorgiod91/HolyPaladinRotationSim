@@ -85,6 +85,8 @@ public static class Paladin {
     private boolean consecrationActive = false;
     private int totalDamageOne = 0;
     private int Time =0;
+    private boolean hasSunsAvatarSkilled = true;
+    private boolean AvengingWrathIsUsed = false;
     
 
     public int getHolyShockCharges() {
@@ -138,6 +140,23 @@ public static class Paladin {
     
     }
    
+    public void AvengingWrath() {
+        if (AvengingWrathIsUsed) {
+            return; 
+        }
+
+        AvengingWrathIsUsed = true;
+        critChance += 15; 
+
+        // Schedule a task to reset crit chance after 20 seconds
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            public void run() {
+                critChance -= 15; 
+                AvengingWrathIsUsed = false;
+            }
+        }, 20000); // 20000 milliseconds = 20 seconds
+    }
 
 
     public int ShieldOfRighteous() {
@@ -273,6 +292,7 @@ public static class Paladin {
         double versatilityBonus = baseDamage * versatilityPercent / 100.0;
         double critMultiplier = random.nextDouble() < (critChance / 100.0) ? 2.0 : 1.0;
         double totalDamage = (baseDamage + versatilityBonus) * critMultiplier;
+        
 
        
         return totalDamage;
