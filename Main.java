@@ -177,6 +177,9 @@ public static class Paladin {
         if (AvengingWrathIsUsed) {
             return; 
         }
+        if(hasSunsAvatarSkilled) {
+            totalDamage = totalDamage +(12 * 12.623)
+        }
 
         AvengingWrathIsUsed = true;
         critChance += 15; 
