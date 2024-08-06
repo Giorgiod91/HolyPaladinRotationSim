@@ -58,13 +58,15 @@ public class Main {
 
          Timer testTimer = new Timer();
          testTimer.scheduleAtFixedRate(new TimerTask() {
+            
             public void run() {
                 holymoly.basicRotation();
                 System.out.println("Time is :" + holymoly.getTime());
                 System.out.println("The Overall Dmg is :" + holymoly.OverAllDamage());
                 // dividing time by overall dmg to display the actual DPS u do so the damage per second
                 System.out.println("DPS damage per second :" + holymoly.OverAllDamage() / holymoly.getTime());
-                if(holymoly.getTime() > 10) {
+                if(holymoly.getTime() > 25) {
+                                  
                     testTimer.cancel();
                 }
             }
@@ -88,6 +90,7 @@ public static class Paladin {
     private int Time =0;
     private boolean hasSunsAvatarSkilled = true;
     private boolean AvengingWrathIsUsed = false;
+    private Timer avengingWrathTimer = new Timer();
     
     // returning the values to later use them
     public int getHolyShockCharges() {
@@ -124,8 +127,14 @@ public static class Paladin {
     }
     //method to simulate the rotation for holypaladins with the methods i declared and all dmg modifiers
     public void basicRotation() {
-        AvengingWrathIsUsed = true;
+       
         int maxRotations = 0;
+        AvengingWrath();
+
+       
+        // i check if the AvengingWrath buff is applied
+
+        System.out.println("crit chance after using Wrath is"+ critChance);
         for(int i = 0; i< 3; i++){
             if(Time  % 12 == 0 && Time >0  && maxRotations <= 4){
             Consecration();
@@ -134,6 +143,7 @@ public static class Paladin {
 
             }
         }
+        System.out.println("current crit is"+ critChance);
         JudgeMent();
         holyShock();
         ShieldOfRighteous();
@@ -150,7 +160,7 @@ public static class Paladin {
 
         AvengingWrathIsUsed = true;
         critChance += 15; 
-
+        avengingWrathTimer.cancel();
         // using the java timer to track the ability that increases the crit chance by another 15% for 20 seconds
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -159,8 +169,10 @@ public static class Paladin {
                 critChance -= 15; 
                 // and reset it again with the variable i declared earlier
                 AvengingWrathIsUsed = false;
+
+                System.out.println("AvengingWrath ended crit chance removed and back to:" + critChance);
             }
-        }, 20000); 
+        },20000); 
     }
 
 
