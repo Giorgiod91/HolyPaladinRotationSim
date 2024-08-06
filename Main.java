@@ -121,6 +121,7 @@ public static class Paladin {
         }, 0, 1000);
         
     }
+    //method to simulate the rotation for holypaladins with the methods i declared and all dmg modifiers
     public void basicRotation() {
         int maxRotations = 0;
         for(int i = 0; i< 3; i++){
@@ -131,7 +132,7 @@ public static class Paladin {
 
             }
         }
-                JudgeMent();
+        JudgeMent();
         holyShock();
         ShieldOfRighteous();
 
