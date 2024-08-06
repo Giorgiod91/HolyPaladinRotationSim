@@ -123,6 +123,7 @@ public static class Paladin {
     }
     //method to simulate the rotation for holypaladins with the methods i declared and all dmg modifiers
     public void basicRotation() {
+        AvengingWrathIsUsed = true;
         int maxRotations = 0;
         for(int i = 0; i< 3; i++){
             if(Time  % 12 == 0 && Time >0  && maxRotations <= 4){
@@ -243,11 +244,13 @@ public static class Paladin {
         totalDamageOne += (int) totalDamage;
         return (int) totalDamage;
     }
-
+    //this is a method that also modifiers the dmg output if u have it talented 
     public int SunsAvatarPassive() {
         int basicDamage = 13463;
+        return basicDamage;
     }
 
+    // method to simulate holyshock dmg depending on the holyshock charges u have
     public int holyShock() {
         if (holyShockCharges <= 0) {
             return 0;
@@ -270,7 +273,7 @@ public static class Paladin {
         totalDamageOne += (int) totalDamage;
         return (int) totalDamage;
     }
-
+    // method to simulate Judgment dmg and also build holypower thats later needed for spenders to be used
     public int JudgeMent() {
         int baseDamage = (int) (mainStat * 1.125);
         holyPower += 1;
