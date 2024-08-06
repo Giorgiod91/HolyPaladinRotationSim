@@ -139,7 +139,7 @@ public static class Paladin {
                
     
     }
-   
+   // if AvengingWrath is active u get 15% increased crit chance
     public void AvengingWrath() {
         if (AvengingWrathIsUsed) {
             return; 
@@ -148,14 +148,14 @@ public static class Paladin {
         AvengingWrathIsUsed = true;
         critChance += 15; 
 
-        // Schedule a task to reset crit chance after 20 seconds
+        
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             public void run() {
                 critChance -= 15; 
                 AvengingWrathIsUsed = false;
             }
-        }, 20000); // 20000 milliseconds = 20 seconds
+        }, 20000); 
     }
 
 
