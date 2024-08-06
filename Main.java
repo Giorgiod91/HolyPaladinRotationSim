@@ -74,12 +74,13 @@ public class Main {
             
                 
 public static class Paladin {
+    // variables to keep track of
     private int holyPower = 0;
     private int holyShockCharges = 1;
     private int mainStat;
     private int versatility;
     private int builderCount = 0;
-    private boolean duskAndDawnActive = false; // Indicates if the buff is active
+    private boolean duskAndDawnActive = false; 
     private int critChance = 0;
     private Random random = new Random();
     private boolean consecrationActive = false;
