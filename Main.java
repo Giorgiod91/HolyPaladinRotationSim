@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -12,6 +13,17 @@ public class Main {
         holymoly.setMainStat(19797);
         holymoly.setVersatility(6246);
         holymoly.setCritChance(36);
+        // using java scanner to get user input
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("are you using herald of the Sun Hero Talent? type yes or no");
+        String heraldYesOrNo = scanner.nextLine();
+        if(heraldYesOrNo.contains("yes")) {
+            holymoly.sethasSunsAvatarSkilled(true);
+
+        }else if (heraldYesOrNo.contains("no")){
+            holymoly.sethasSunsAvatarSkilled(false);
+        }
+
         
          // Testing Crusader Strike to build Holy Power and potentially activate Dusk and Dawn
         // System.out.println("Testing Crusader Strike:");
@@ -88,7 +100,7 @@ public static class Paladin {
     private boolean consecrationActive = false;
     private int totalDamageOne = 0;
     private int Time =0;
-    private boolean hasSunsAvatarSkilled = true;
+    private boolean hasSunsAvatarSkilled = false;
     private boolean AvengingWrathIsUsed = false;
     private Timer avengingWrathTimer = new Timer();
     
@@ -113,6 +125,14 @@ public static class Paladin {
     public int getTime() {
             return Time;
         }
+
+    public boolean DoeshasSunsAvatarSkilled() {
+        return hasSunsAvatarSkilled;
+    }
+
+    public void sethasSunsAvatarSkilled(boolean hasSunsAvatarSkilled) {
+        this.hasSunsAvatarSkilled = hasSunsAvatarSkilled;
+    }
     
     // using the java timer to track the seconds 
     public void StartTimer() {
