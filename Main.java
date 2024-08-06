@@ -89,7 +89,7 @@ public static class Paladin {
     private boolean hasSunsAvatarSkilled = true;
     private boolean AvengingWrathIsUsed = false;
     
-
+    // returning the values to later use them
     public int getHolyShockCharges() {
         return holyShockCharges;
     }
@@ -151,7 +151,7 @@ public static class Paladin {
         AvengingWrathIsUsed = true;
         critChance += 15; 
 
-        
+        // using the java timer to track the ability that increases the crit chance by another 15% for 20 seconds
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             public void run() {
