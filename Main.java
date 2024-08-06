@@ -290,7 +290,7 @@ public static class Paladin {
         totalDamageOne += (int) totalDamage;
         return (int) totalDamage;
     }
-
+    // this is the dmg modifier so our dmg gets modified by a couple of thing like stats we have to keep that in mind
     private double applyVersatilityAndCrit(double baseDamage) {
         double versatilityPercent = versatility / 205.0;
         double versatilityBonus = baseDamage * versatilityPercent / 100.0;
