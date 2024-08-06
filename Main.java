@@ -155,7 +155,9 @@ public static class Paladin {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             public void run() {
+                // adding the 15% crit chance
                 critChance -= 15; 
+                // and reset it again with the variable i declared earlier
                 AvengingWrathIsUsed = false;
             }
         }, 20000); 
