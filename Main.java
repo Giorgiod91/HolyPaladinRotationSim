@@ -77,7 +77,7 @@ public class Main {
                 System.out.println("The Overall Dmg is :" + holymoly.OverAllDamage());
                 // dividing time by overall dmg to display the actual DPS u do so the damage per second
                 System.out.println("DPS damage per second :" + holymoly.OverAllDamage() / holymoly.getTime());
-                if(holymoly.getTime() > 25) {
+                if(holymoly.getTime() > 5) {
                                   
                     testTimer.cancel();
                 }
@@ -95,6 +95,8 @@ public static class Paladin {
     private int versatility;
     private int builderCount = 0;
     private boolean duskAndDawnActive = false; 
+   
+    
     private int critChance = 0;
     private Random random = new Random();
     private boolean consecrationActive = false;
@@ -174,11 +176,16 @@ public static class Paladin {
     }
    // if AvengingWrath is active u get 15% increased crit chance
     public void AvengingWrath() {
+        
         if (AvengingWrathIsUsed) {
             return; 
         }
         if(hasSunsAvatarSkilled) {
-            totalDamage = totalDamage +(12 * 12.623)
+            double sunsAvatarDamage = 12 * (mainStat * 0.18);
+            totalDamageOne += sunsAvatarDamage;
+            
+
+           
         }
 
         AvengingWrathIsUsed = true;
