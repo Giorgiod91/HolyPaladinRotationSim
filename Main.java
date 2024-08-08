@@ -271,6 +271,10 @@ public static class Paladin {
         return (int) totalDamage;
     }
 
+    public int divineToll(){
+        holyPower += 5;
+    }
+
     public int crusaderStrike() {
         int baseDamage = (int) (mainStat * 1.071);
         holyPower += 1;
@@ -279,6 +283,8 @@ public static class Paladin {
         // Check if we have used 3 builders
         if (builderCount == 3) {
             duskAndDawnActive = true; // Activate Dusk and Dawn buff
+            System.out.println("duskAndDawn buff is now active");
+
             builderCount = 0; // Reset builder count
         }
 
