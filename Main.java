@@ -95,6 +95,9 @@ public static class Paladin {
     private int versatility;
     private int builderCount = 0;
     private boolean duskAndDawnActive = false; 
+    private boolean RisingSunlight = false;
+    private int holyShockCounter = 0;
+
    
     
     private int critChance = 0;
@@ -166,9 +169,10 @@ public static class Paladin {
             }
         }
         System.out.println("current crit is"+ critChance);
-        JudgeMent();
+        
         holyShock();
-        ShieldOfRighteous();
+      
+        
 
        
                
@@ -187,6 +191,7 @@ public static class Paladin {
 
            
         }
+        RisingSunlight = true;  // Activating Rising Sunlight buff
 
         AvengingWrathIsUsed = true;
         critChance += 15; 
@@ -200,7 +205,7 @@ public static class Paladin {
                 // and reset it again with the variable i declared earlier
                 AvengingWrathIsUsed = false;
 
-                System.out.println("AvengingWrath ended crit chance removed and back to:" + critChance);
+              
             }
         },20000); 
     }
@@ -273,6 +278,8 @@ public static class Paladin {
 
     public int divineToll(){
         holyPower += 5;
+        RisingSunlight = true;  // Activating Rising Sunlight buff
+        return 0;
     }
 
     public int crusaderStrike() {
@@ -303,26 +310,42 @@ public static class Paladin {
 
     // method to simulate holyshock dmg depending on the holyshock charges u have
     public int holyShock() {
-        if (holyShockCharges <= 0) {
-            return 0;
+        int totalHolyShockDamage = 0;  // To accumulate damage from multiple casts
+        int casts = 1;  // Default is 1 cast
+    
+        if (RisingSunlight) {
+            casts = 3;  // Triple cast when Rising Sunlight is active
+            RisingSunlight = false;  // Consume the buff after use
+            System.out.println("Rising Sunlight active: Holy Shock cast will occur 3 times!");
         }
-
-        int baseDamage = (int) (mainStat * 1.2);
-        holyPower += 1;
-        builderCount += 1;
-        holyShockCharges -= 1;
-
-        // Check for Dusk and Dawn buff activation
-        if (builderCount >= 3) {
-            duskAndDawnActive = true;
-            builderCount = 0;
+    
+        for (int i = 0; i < casts; i++) {
+            holyShockCounter++;  // Increment the counter for each cast
+            System.out.println("Holy Shock cast #" + holyShockCounter);
+    
+            if (holyShockCharges <= 0) {
+                return totalHolyShockDamage;  // Return total damage if no charges left
+            }
+    
+            int baseDamage = (int) (mainStat * 1.2);
+            holyPower += 1;
+            builderCount += 1;
+            holyShockCharges -= 1;
+    
+            // Check for Dusk and Dawn buff activation
+            if (builderCount >= 3) {
+                duskAndDawnActive = true;
+                builderCount = 0;
+            }
+    
+            double totalDamage = applyVersatilityAndCrit(baseDamage);
+    
+            System.out.println("Holy Shock damage: " + totalDamage);
+            totalHolyShockDamage += (int) totalDamage;  // Add to the total damage
+            totalDamageOne += (int) totalDamage;  // Add to the overall damage
         }
-
-        double totalDamage = applyVersatilityAndCrit(baseDamage);
-        System.out.println("Holy Shock damage: " + totalDamage);
-        // adding dmg to totaldamageone
-        totalDamageOne += (int) totalDamage;
-        return (int) totalDamage;
+    
+        return totalHolyShockDamage;
     }
     // method to simulate Judgment dmg and also build holypower thats later needed for spenders to be used
     public int JudgeMent() {
