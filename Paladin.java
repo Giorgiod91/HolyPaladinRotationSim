@@ -26,6 +26,7 @@ public class Paladin {
     private boolean HolyShockOnCooldown = false;
     private boolean JudgmentOnCooldown = false;
     private boolean crusaderStrikeOnCooldown = false;
+    private boolean divineTollOnCooldown = false;
 
 
     /// timers 
@@ -33,6 +34,7 @@ public class Paladin {
     private Timer holyShockCooldownTimer = new Timer();
     private Timer judgmentCooldownTimer = new Timer();
     private Timer crusaderStrikeCooldownTimer = new Timer();
+    private Timer divineTollCooldownTimer = new Timer();
 
 
     // Getters and Setters
@@ -67,16 +69,19 @@ public class Paladin {
         divineToll();
         ShieldOfRighteous();
         crusaderStrike();
+        
+        // Add debug information here
+        System.out.println("Checking Holy Shock status...");
         if (!HolyShockOnCooldown) {
+            System.out.println("Holy Shock is not on cooldown. Using it now...");
             holyShock();
-        } 
+        } else {
+            System.out.println("Holy Shock is on cooldown.");
+        }
+    
         HammerOfWrath();
-        
-        
-
-
-
-    }   
+    }
+    
     //::TODO:: Add the Blessing of Summer dmg convert healing into dmg
     public void BlessingOfSummer() {
         
@@ -119,6 +124,7 @@ public class Paladin {
         }
         HammerOfWrathUsable = true;
         RisingSunlight = true;
+        holyShockCharges +=3;
         AvengingWrathIsUsed = true;
         critChance += 15;
         avengingWrathTimer.cancel();
@@ -191,123 +197,148 @@ public class Paladin {
 
     // Simulate the Divine Toll ability
     public int divineToll() {
+        if(divineTollOnCooldown) {
+            System.out.println("Divine Toll is on cooldown!");
+            return 0;
+        }
         holyPower += 5;
         RisingSunlight = true;  // Activating Rising Sunlight buff
+        divineTollOnCooldown = true;
+    TimerTask cooldownTask = new TimerTask() {
+        @Override
+        public void run() {
+            divineTollOnCooldown = false;
+            System.out.println("Divine Toll is ready to use again.");
+        }
+    };
+    divineTollCooldownTimer.schedule(cooldownTask, 45000);
         return 0;
-
     }
 
     // Simulate the Crusader Strike ability
     public int crusaderStrike() {
+        if (crusaderStrikeOnCooldown) {
+            System.out.println("Crusader Strike is on cooldown!");
+            return 0;
+        }
+    
         int baseDamage = (int) (mainStat * 1.071);
         holyPower += 1;
         builderCount += 1;
-
+    
         // Check if we have used 3 builders
         if (builderCount == 3) {
             duskAndDawnActive = true; 
-            System.out.println("duskAndDawn buff is now active");
+            System.out.println("Dusk and Dawn buff is now active");
             builderCount = 0; 
         }
+    
+        double totalDamage = applyVersatilityAndCrit(baseDamage);
+        System.out.println("Crusader Strike damage: " + totalDamage);
+        totalDamageOne += (int) totalDamage;
+    
+        // Start cooldown
         crusaderStrikeOnCooldown = true;
-        crusaderStrikeCooldownTimer.schedule(new TimerTask() {
+        TimerTask cooldownTask = new TimerTask() {
             @Override
             public void run() {
                 crusaderStrikeOnCooldown = false;
                 System.out.println("Crusader Strike is ready to use again.");
             }
-        }, 6500);
-
-
-        double totalDamage = applyVersatilityAndCrit(baseDamage);
-        System.out.println("Crusader Strike damage: " + totalDamage);
-        totalDamageOne += (int) totalDamage;
+        };
+        crusaderStrikeCooldownTimer.schedule(cooldownTask, 9200); 
         return (int) totalDamage;
     }
+    
 
    
     // Simulate the Holy Shock ability with the Rising Sunlight talent
-public int holyShock() {
-    int totalHolyShockDamage = 0;
+    public int holyShock() {
+        int totalHolyShockDamage = 0;
     
-    // Check if Holy Shock is on cooldown
-    if (HolyShockOnCooldown) {
-        System.out.println("Holy Shock is on cooldown!");
-        return totalHolyShockDamage;  // Exit the method if on cooldown
-    }
-    
-    // Check if RisingSunlight is active
-    if (RisingSunlight) {
-        System.out.println("Rising Sunlight active: Holy Shock will be cast 3 times!");
-    
-        // Cast Holy Shock 3 times, but only consume 1 charge
-        for (int i = 0; i < 3; i++) {
-            holyShockCounter++;
-            System.out.println("Holy Shock cast #" + holyShockCounter);
-    
-            int baseDamage = (int) (mainStat * 1.2);
-            holyPower += 1;
-            builderCount += 1;
-    
-            // Check for Dusk and Dawn buff activation
-            if (builderCount >= 3) {
-                duskAndDawnActive = true;
-                builderCount = 0;
-                System.out.println("Dusk and Dawn buff is now active.");
-            }
-    
-            double totalDamage = applyVersatilityAndCrit(baseDamage);
-            System.out.println("Holy Shock damage: " + totalDamage);
-            totalHolyShockDamage += (int) totalDamage;  
-            totalDamageOne += (int) totalDamage;  
+        // Check if Holy Shock is on cooldown
+        if (HolyShockOnCooldown) {
+            System.out.println("Holy Shock is on cooldown!");
+            return totalHolyShockDamage; 
         }
     
-        // Only after all 3 casts, consume 1 Holy Shock charge and deactivate RisingSunlight
-        holyShockCharges -= 1;
-        RisingSunlight = false;
+        // Check if Rising Sunlight is active
+        if (RisingSunlight) {
+            System.out.println("Rising Sunlight active: Holy Shock will be cast 3 times!");
     
-    } else {
-        // Normal single Holy Shock cast
-        if (holyShockCharges > 0) {
-            holyShockCounter++;
-            System.out.println("Holy Shock cast #" + holyShockCounter);
+            // Cast Holy Shock 3 times, but only consume 1 charge
+            for (int i = 0; i < 3; i++) {
+                if (holyShockCharges <= 0) break; 
+                holyShockCharges += 3;
+                holyShockCounter++;
+                System.out.println("Holy Shock cast #" + holyShockCounter);
     
-            int baseDamage = (int) (mainStat * 1.2);
-            holyPower += 1;
-            builderCount += 1;
+                int baseDamage = (int) (mainStat * 1.2);
+                holyPower += 1;
+                builderCount += 1;
+    
+                // Check for Dusk and Dawn buff activation
+                if (builderCount >= 3) {
+                    duskAndDawnActive = true;
+                    builderCount = 0;
+                    System.out.println("Dusk and Dawn buff is now active.");
+                }
+    
+                double totalDamage = applyVersatilityAndCrit(baseDamage);
+                System.out.println("Holy Shock damage: " + totalDamage);
+                totalHolyShockDamage += (int) totalDamage;  
+                totalDamageOne += (int) totalDamage;  
+            }
+    
             holyShockCharges -= 1;
-    
-            // Check for Dusk and Dawn buff activation
-            if (builderCount >= 3) {
-                duskAndDawnActive = true;
-                builderCount = 0;
-                System.out.println("Dusk and Dawn buff is now active.");
-            }
-    
-            double totalDamage = applyVersatilityAndCrit(baseDamage);
-            System.out.println("Holy Shock damage: " + totalDamage);
-            totalHolyShockDamage += (int) totalDamage;  // Add to the total damage
-            totalDamageOne += (int) totalDamage;  // Add to the overall damage
-    
-            // Check if Holy Shock is on cooldown 7.1 seconds
-            if (holyShockCharges <= 0) {
-                HolyShockOnCooldown = true;
-                holyShockCooldownTimer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        HolyShockOnCooldown = false;
-                        System.out.println("Holy Shock is ready to use again.");
-                    }
-                }, 7100);  
-            }
+            RisingSunlight = false;
+
     
         } else {
-            System.out.println("No Holy Shock charges available.");
+            // Normal single Holy Shock cast
+            if (holyShockCharges > 0) {
+                holyShockCounter++;
+                System.out.println("Holy Shock cast #" + holyShockCounter);
+    
+                int baseDamage = (int) (mainStat * 1.2);
+                holyPower += 1;
+                builderCount += 1;
+                holyShockCharges -= 1;
+    
+                // Check for Dusk and Dawn buff activation
+                if (builderCount >= 3) {
+                    duskAndDawnActive = true;
+                    builderCount = 0;
+                    System.out.println("Dusk and Dawn buff is now active.");
+                }
+    
+                double totalDamage = applyVersatilityAndCrit(baseDamage);
+                System.out.println("Holy Shock damage: " + totalDamage);
+                totalHolyShockDamage += (int) totalDamage;  
+                totalDamageOne += (int) totalDamage;  
+    
+                
+                if (holyShockCharges <= 0) {
+                    HolyShockOnCooldown = true;
+                    TimerTask cooldownTask = new TimerTask() {
+                        @Override
+                        public void run() {
+                            HolyShockOnCooldown = false;
+                            System.out.println("Holy Shock is ready to use again.");
+                            holyShockCharges = 1; // Reset charges after cooldown
+                        }
+                    };
+                    holyShockCooldownTimer.schedule(cooldownTask, 7100); 
+                }
+    
+            } else {
+                System.out.println("No Holy Shock charges available.");
+            }
         }
+    
+        return totalHolyShockDamage;
     }
     
-    return totalHolyShockDamage;
-}
 
     
 
