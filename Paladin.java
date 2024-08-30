@@ -2,6 +2,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 //TODO: Create a priority list for the rotation 
+//TODO: refactor dmg m,odiufiers to be alligned with curent game patch value to keep up with class changes
 
 public class Paladin {
     private int holyPower = 0;
