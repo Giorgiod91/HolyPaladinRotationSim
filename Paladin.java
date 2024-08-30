@@ -1,6 +1,7 @@
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+//TODO: Create a priority list for the rotation 
 
 public class Paladin {
     private int holyPower = 0;
