@@ -9,9 +9,13 @@ public class Main {
         // Creating a new Paladin instance
         Paladin holymoly = new Paladin();
         // Setting the main stat, versatility and crit of the Paladin
-        holymoly.setMainStat(19797);
-        holymoly.setVersatility(6246);
-        holymoly.setCritChance(36);
+        holymoly.setMainStat(62833);
+        holymoly.setVersatility(13670);
+        holymoly.setCritChance(19);
+
+        // create enchants or trinket
+        TrinktesOrEnchants trinket = new TrinktesOrEnchants();
+        trinket.RadiantPowerEnchant(holymoly);
         // using java scanner to get user input
         Scanner scanner = new Scanner(System.in);
         System.out.print("are you using herald of the Sun Hero Talent? type yes or no");

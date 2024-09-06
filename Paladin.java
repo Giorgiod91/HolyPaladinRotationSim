@@ -391,4 +391,12 @@ public class Paladin {
     public void setMainStat(int mainStat) { this.mainStat = mainStat; }
     public void setVersatility(int versatility) { this.versatility = versatility; }
     public void setCritChance(int critChance) { this.critChance = critChance; }
-}
+
+    //getters for stats
+    public int getMainStat() {
+        return mainStat;
+    }
+
+    public int getVersatility() {
+        return versatility;
+    }}
