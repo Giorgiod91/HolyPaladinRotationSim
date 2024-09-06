@@ -385,6 +385,10 @@ public class Paladin {
 
         return (int) totalDamage;
     }
+    //method to add damage to the total damage from trinkets or enchants for example
+    public void addDamage(int damage) {
+        this.totalDamageOne += damage;
+    }
 
 
     // Method to apply versatility and crit modifiers to base damage
