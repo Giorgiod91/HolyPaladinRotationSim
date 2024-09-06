@@ -80,6 +80,9 @@ public class Main {
                 System.out.println("The Overall Dmg is :" + holymoly.OverAllDamage());
                 // dividing time by overall dmg to display the actual DPS u do so the damage per second
                 System.out.println("DPS damage per second :" + holymoly.OverAllDamage() / holymoly.getTime());
+                if(holymoly.getMainStat() == 62833 + 350) {
+                    System.out.println("Radiant Power Enchant is working");
+                }
                 if(holymoly.getTime() > 30) {
                                   
                     testTimer.cancel();
