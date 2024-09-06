@@ -9,7 +9,7 @@ public class Main {
         // Creating a new Paladin instance
         Paladin holymoly = new Paladin();
         // Setting the main stat, versatility and crit of the Paladin
-        holymoly.setMainStat(62833);
+        holymoly.setMainStat(60170);
         holymoly.setVersatility(13670);
         holymoly.setCritChance(19);
 

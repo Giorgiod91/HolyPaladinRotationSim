@@ -257,6 +257,7 @@ public class Paladin {
     // Simulate the Holy Shock ability with the Rising Sunlight talent
     public int holyShock() {
         int totalHolyShockDamage = 0;
+        
     
         // Check if Holy Shock is on cooldown
         if (HolyShockOnCooldown) {
@@ -273,17 +274,20 @@ public class Paladin {
                 if (holyShockCharges <= 0) break; 
                 holyShockCharges += 3;
                 holyShockCounter++;
+
                 System.out.println("Holy Shock cast #" + holyShockCounter);
     
                 int baseDamage = (int) (mainStat * 1.2);
                 holyPower += 1;
                 builderCount += 1;
+
     
                 // Check for Dusk and Dawn buff activation
                 if (builderCount >= 3) {
                     duskAndDawnActive = true;
                     builderCount = 0;
                     System.out.println("Dusk and Dawn buff is now active.");
+                    
                 }
     
                 double totalDamage = applyVersatilityAndCrit(baseDamage);
@@ -315,7 +319,7 @@ public class Paladin {
                 }
     
                 double totalDamage = applyVersatilityAndCrit(baseDamage);
-                System.out.println("Holy Shock damage: " + totalDamage);
+               
                 totalHolyShockDamage += (int) totalDamage;  
                 totalDamageOne += (int) totalDamage;  
     
@@ -337,8 +341,12 @@ public class Paladin {
                 System.out.println("No Holy Shock charges available.");
             }
         }
-    
+
+        //System.out.println("overall Holy Shock dmg :" );
+        System.out.println("Holy Shock damage: " + totalHolyShockDamage);
+        
         return totalHolyShockDamage;
+       
     }
     
 
