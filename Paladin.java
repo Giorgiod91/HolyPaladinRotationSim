@@ -19,6 +19,9 @@ public class Paladin {
     private Random random = new Random();
     private int totalDamageOne = 0;
     private int Time = 0;
+    private int haste;
+    private int weaponDamage;
+    
    
     //booleans 
     private boolean hasSunsAvatarSkilled = false;
@@ -74,7 +77,7 @@ public class Paladin {
 
         if(!consecrationActive) {
             abilityPriorities.put("Consecration", 1);
-        };
+        }
         
         int maxRotations = 0;
         AvengingWrath();
@@ -379,6 +382,11 @@ public class Paladin {
     return totalHolyShockDamage;
    
 }
+
+    // Simulate Melee Attack
+    public int MeleeAttack() {
+
+    }
     
 
     
