@@ -1,6 +1,9 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+
 //TODO: Create a priority list for the rotation 
 //TODO: refactor dmg m,odiufiers to be alligned with curent game patch value to keep up with class changes
 
@@ -11,6 +14,7 @@ public class Paladin {
     private int versatility;
     private int builderCount = 0;
     private int holyShockCounter = 0;
+    private int holyShockOverAllDamage = 0;
     private int critChance = 0;
     private Random random = new Random();
     private int totalDamageOne = 0;
@@ -57,6 +61,21 @@ public class Paladin {
 
     // Execute the basic rotation of abilities
     public void basicRotationForOneTarget() {
+
+        Map<String, Integer> abilityPriorities = new HashMap<>();
+        abilityPriorities.put("AvengingWrath", 1);
+        abilityPriorities.put("Consecration", 2);
+        abilityPriorities.put("JudgeMent", 3);
+        abilityPriorities.put("divineToll", 4);
+        abilityPriorities.put("ShieldOfRighteous", 5);
+        abilityPriorities.put("crusaderStrike", 6);
+        abilityPriorities.put("holyShock", 7);
+        abilityPriorities.put("HammerOfWrath", 8);
+
+        if(!consecrationActive) {
+            abilityPriorities.put("Consecration", 1);
+        };
+        
         int maxRotations = 0;
         AvengingWrath();
         System.out.println("Crit chance after using Wrath is: " + critChance);
@@ -255,99 +274,111 @@ public class Paladin {
 
    
     // Simulate the Holy Shock ability with the Rising Sunlight talent
-    public int holyShock() {
-        int totalHolyShockDamage = 0;
-        
-    
-        // Check if Holy Shock is on cooldown
-        if (HolyShockOnCooldown) {
-            System.out.println("Holy Shock is on cooldown!");
-            return totalHolyShockDamage; 
-        }
-    
-        // Check if Rising Sunlight is active
-        if (RisingSunlight) {
-            System.out.println("Rising Sunlight active: Holy Shock will be cast 3 times!");
-    
-            // Cast Holy Shock 3 times, but only consume 1 charge
-            for (int i = 0; i < 3; i++) {
-                if (holyShockCharges <= 0) break; 
-                holyShockCharges += 3;
-                holyShockCounter++;
+  // Simulate the Holy Shock ability with the Rising Sunlight talent
 
-                System.out.println("Holy Shock cast #" + holyShockCounter);
+  public int holyShock() {
+    int totalHolyShockDamage = 0;
+    int howMuchDidShockDo = 0;
     
-                int baseDamage = (int) (mainStat * 1.2);
-                holyPower += 1;
-                builderCount += 1;
 
-    
-                // Check for Dusk and Dawn buff activation
-                if (builderCount >= 3) {
-                    duskAndDawnActive = true;
-                    builderCount = 0;
-                    System.out.println("Dusk and Dawn buff is now active.");
-                    
-                }
-    
-                double totalDamage = applyVersatilityAndCrit(baseDamage);
-                System.out.println("Holy Shock damage: " + totalDamage);
-                totalHolyShockDamage += (int) totalDamage;  
-                totalDamageOne += (int) totalDamage;  
-            }
-    
-            holyShockCharges -= 1;
-            RisingSunlight = false;
-
-    
-        } else {
-            // Normal single Holy Shock cast
-            if (holyShockCharges > 0) {
-                holyShockCounter++;
-                System.out.println("Holy Shock cast #" + holyShockCounter);
-    
-                int baseDamage = (int) (mainStat * 1.2);
-                holyPower += 1;
-                builderCount += 1;
-                holyShockCharges -= 1;
-    
-                // Check for Dusk and Dawn buff activation
-                if (builderCount >= 3) {
-                    duskAndDawnActive = true;
-                    builderCount = 0;
-                    System.out.println("Dusk and Dawn buff is now active.");
-                }
-    
-                double totalDamage = applyVersatilityAndCrit(baseDamage);
-               
-                totalHolyShockDamage += (int) totalDamage;  
-                totalDamageOne += (int) totalDamage;  
-    
-                
-                if (holyShockCharges <= 0) {
-                    HolyShockOnCooldown = true;
-                    TimerTask cooldownTask = new TimerTask() {
-                        @Override
-                        public void run() {
-                            HolyShockOnCooldown = false;
-                            System.out.println("Holy Shock is ready to use again.");
-                            holyShockCharges = 1; // Reset charges after cooldown
-                        }
-                    };
-                    holyShockCooldownTimer.schedule(cooldownTask, 7100); 
-                }
-    
-            } else {
-                System.out.println("No Holy Shock charges available.");
-            }
-        }
-
-        //System.out.println("overall Holy Shock dmg :" );
-        System.out.println("Holy Shock damage: " + totalHolyShockDamage);
-        
-        return totalHolyShockDamage;
-       
+    // Check if Holy Shock is on cooldown
+    if (HolyShockOnCooldown) {
+        System.out.println("Holy Shock is on cooldown!");
+        return totalHolyShockDamage; 
     }
+
+    // Check if Rising Sunlight is active
+    if (RisingSunlight) {
+    // Activate Rising Sunlight: Holy Shock will be cast 3 times so we add 3 charges
+        holyShockCharges += 3;
+        System.out.println("Rising Sunlight active: Holy Shock will be cast 3 times!");
+
+        // Cast Holy Shock 3 times, but only consume 1 charge
+        for (int i = 0; i < 3; i++) {
+            if (holyShockCharges <= 0) break;             
+            holyShockCounter++;
+
+
+            System.out.println("Holy Shock cast #" + holyShockCounter);
+
+            int baseDamage = (int) (mainStat * 1.08);
+            holyPower += 1;
+            builderCount += 1;
+            holyShockOverAllDamage += baseDamage;
+
+
+            // Check for Dusk and Dawn buff activation
+            if (builderCount >= 3) {
+                duskAndDawnActive = true;
+                builderCount = 0;
+                System.out.println("Dusk and Dawn buff is now active.");
+                
+            }
+
+            double totalDamage = applyVersatilityAndCrit(baseDamage);
+            System.out.println("Holy Shock damage: " + totalDamage);
+            totalHolyShockDamage += (int) totalDamage;  
+            totalDamageOne += (int) totalDamage;  
+            holyShockOverAllDamage += (int) totalDamage;
+            
+           
+        }
+
+        holyShockCharges -= 1;
+        RisingSunlight = false;
+
+
+    } else {
+        // Normal single Holy Shock cast
+        if (holyShockCharges > 0) {
+            holyShockCounter++;
+            System.out.println("Holy Shock cast #" + holyShockCounter);
+
+            int baseDamage = (int) (mainStat * 1.08);
+            holyPower += 1;
+            builderCount += 1;
+            holyShockCharges -= 1;
+            holyShockOverAllDamage += baseDamage;
+
+            // Check for Dusk and Dawn buff activation
+            if (builderCount >= 3) {
+                duskAndDawnActive = true;
+                builderCount = 0;
+                System.out.println("Dusk and Dawn buff is now active.");
+            }
+
+            double totalDamage = applyVersatilityAndCrit(baseDamage);
+           
+            totalHolyShockDamage += (int) totalDamage;  
+            totalDamageOne += (int) totalDamage;  
+            holyShockOverAllDamage += (int) totalDamage;
+
+            
+            if (holyShockCharges <= 0) {
+                HolyShockOnCooldown = true;
+                TimerTask cooldownTask = new TimerTask() {
+                    @Override
+                    public void run() {
+                        HolyShockOnCooldown = false;
+                        System.out.println("Holy Shock is ready to use again.");
+                        holyShockCharges = 1; // Reset charges after cooldown
+                    }
+                };
+                holyShockCooldownTimer.schedule(cooldownTask, 7100); 
+            }
+
+        } else {
+            System.out.println("No Holy Shock charges available.");
+        }
+    }
+
+    //System.out.println("overall Holy Shock dmg :" );
+    System.out.println("Holy Shock damage: " + totalHolyShockDamage);
+    System.out.println("Overall Holy Shock damage: " + holyShockOverAllDamage);
+    
+    return totalHolyShockDamage;
+   
+}
     
 
     
@@ -359,7 +390,7 @@ public class Paladin {
             return 0;  
         }
 
-        int baseDamage = (int) (mainStat * 1.125);
+        int baseDamage = (int) (mainStat * 0.610542);
         holyPower += 1;
         builderCount += 1;
 
@@ -396,6 +427,7 @@ public class Paladin {
         double versatilityPercent = versatility / 205.0;
         double versatilityBonus = baseDamage * versatilityPercent / 100.0;
         double critMultiplier = random.nextDouble() < (critChance / 100.0) ? 2.0 : 1.0;
+        double hasteMultiplier = 1.0; // Haste not implemented yet
         return (baseDamage + versatilityBonus) * critMultiplier;
     }
 
@@ -403,6 +435,7 @@ public class Paladin {
     public void setMainStat(int mainStat) { this.mainStat = mainStat; }
     public void setVersatility(int versatility) { this.versatility = versatility; }
     public void setCritChance(int critChance) { this.critChance = critChance; }
+    public void setHasteChance(int hasteChance) { this.critChance = hasteChance; }
 
     //getters for stats
     public int getMainStat() {
