@@ -72,7 +72,7 @@ public class Paladin {
         ShieldOfRighteous();
         crusaderStrike();
         
-        // Add debug information here
+       
         System.out.println("Checking Holy Shock status...");
         if (!HolyShockOnCooldown) {
             System.out.println("Holy Shock is not on cooldown. Using it now...");
