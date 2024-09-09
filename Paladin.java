@@ -64,7 +64,7 @@ public class Paladin {
 
     // Execute the basic rotation of abilities
     public void basicRotationForOneTarget() {
-
+        // createing hashmap for the rotation priority it turns those strings into integers to then be used in the rotation
         Map<String, Integer> abilityPriorities = new HashMap<>();
         abilityPriorities.put("AvengingWrath", 1);
         abilityPriorities.put("Consecration", 2);
