@@ -66,8 +66,8 @@ public class Paladin {
     public void basicRotationForOneTarget() {
         // createing hashmap for the rotation priority it turns those strings into integers to then be used in the rotation
         Map<String, Integer> abilityPriorities = new HashMap<>();
-        abilityPriorities.put("AvengingWrath", 1);
         abilityPriorities.put("Consecration", 2);
+        abilityPriorities.put("AvengingWrath", 1);
         abilityPriorities.put("JudgeMent", 3);
         abilityPriorities.put("divineToll", 4);
         abilityPriorities.put("ShieldOfRighteous", 5);
@@ -77,6 +77,9 @@ public class Paladin {
 
         if(!consecrationActive) {
             abilityPriorities.put("Consecration", 1);
+        }
+        if(!AvengingWrathIsUsed) {
+            abilityPriorities.put("AvengingWrath", 2);
         }
         
         int maxRotations = 0;
@@ -274,6 +277,7 @@ public class Paladin {
         return (int) totalDamage;
     }
     
+
 
    
     // Simulate the Holy Shock ability with the Rising Sunlight talent
