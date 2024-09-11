@@ -81,6 +81,9 @@ public class Paladin {
         if(!AvengingWrathIsUsed) {
             abilityPriorities.put("AvengingWrath", 2);
         }
+        if(!HolyShockOnCooldown) {
+            abilityPriorities.put("holyShock", 3);
+        }
         
         int maxRotations = 0;
         AvengingWrath();
