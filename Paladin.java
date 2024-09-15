@@ -126,6 +126,8 @@ public class Paladin {
         }
         
         double baseDamage = mainStat * 1.1067;
+        // applying the buff from the latest patch notes hammer of wrath got buffed by 20%
+        baseDamage *= 1.2;
         if (EnemyIsBelow20 || HammerOfWrathUsable) {
             double totalDamage = baseDamage;
             totalDamage = applyVersatilityAndCrit(totalDamage);
@@ -143,6 +145,17 @@ public class Paladin {
                 }
             }, 16000);
         }
+    }
+    //holyprism method
+    public void HolyPrism() {
+        int baseDamage = (int) (mainStat * 2.16);
+        // applying the buff from the latest patch notes holy prism got buffed by 100%
+        baseDamage *= 2;
+        holyPower += 1;
+        builderCount += 1;
+        double totalDamage = applyVersatilityAndCrit(baseDamage);
+        System.out.println("Holy Prism damage: " + totalDamage);
+        totalDamageOne += (int) totalDamage;
     }
 
     // Activate Avenging Wrath for increased crit chance
@@ -253,6 +266,8 @@ public class Paladin {
         }
     
         int baseDamage = (int) (mainStat * 1.071);
+        // Applying the buff from the lastest patch notes crusader strike got buffed by 60%
+        baseDamage *= 1.6;
         holyPower += 1;
         builderCount += 1;
     
@@ -406,6 +421,8 @@ public class Paladin {
         }
 
         int baseDamage = (int) (mainStat * 0.610542);
+        // applying current class buffs to my method judgement got buffed by 6ß%
+        baseDamage *= 1.6;
         holyPower += 1;
         builderCount += 1;
 
