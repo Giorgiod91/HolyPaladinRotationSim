@@ -147,6 +147,7 @@ public class Paladin {
         }
     }
     //holyprism method
+    //TODO: add the prism aoe dmg !!!!
     public void HolyPrism() {
         int baseDamage = (int) (mainStat * 2.16);
         // applying the buff from the latest patch notes holy prism got buffed by 100%
