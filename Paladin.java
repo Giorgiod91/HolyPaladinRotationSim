@@ -481,4 +481,15 @@ public class Paladin {
 
     public int getVersatility() {
         return versatility;
-    }}
+    }
+
+    public int getCritChance() {
+        return critChance;
+    }
+    public int getHasteChance() {
+        return haste;
+    }
+
+}
+
+   
