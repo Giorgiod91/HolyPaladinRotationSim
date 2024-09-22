@@ -412,6 +412,7 @@ public class Paladin {
 
     // Simulate Melee Attack
     public int MeleeAttack() {
+        //TODO: add the melee attack dmg modifier
 
     }
     
