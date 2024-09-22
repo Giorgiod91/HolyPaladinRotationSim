@@ -21,7 +21,7 @@ public class Paladin {
     private int Time = 0;
     private int haste;
     private int weaponDamage;
-    
+    private int shieldOfRighteousCount = 0;
    
     //booleans 
     private boolean hasSunsAvatarSkilled = false;
@@ -84,6 +84,7 @@ public class Paladin {
         if(!HolyShockOnCooldown) {
             abilityPriorities.put("holyShock", 3);
         }
+        
         
         int maxRotations = 0;
         AvengingWrath();
@@ -209,7 +210,10 @@ public class Paladin {
         totalDamage = applyVersatilityAndCrit(totalDamage);
 
         totalDamageOne += (int) totalDamage;
+
+        shieldOfRighteousCount++;
         System.out.println("Shield of the Righteous damage: " + totalDamage);
+        System.out.println("the amount of shield of the righteous are used" + shieldOfRighteousCount);
         return (int) totalDamage;
     }
 

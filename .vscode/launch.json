@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "Main",
+      "projectName": "HpalRotation_840c9bd3"
+    },
+    {
+      "type": "java",
+      "name": "PaladinSimulatorUI",
+      "request": "launch",
+      "mainClass": "PaladinSimulatorUI",
+      "projectName": "HpalRotation_840c9bd3",
+      "vmArgs": "--module-path \"C:/Program Files/javafx-sdk-22.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
+    }
+  ]
+}
