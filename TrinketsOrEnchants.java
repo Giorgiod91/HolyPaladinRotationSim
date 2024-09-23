@@ -54,6 +54,7 @@ public class TrinketsOrEnchants {
 
         // Creating a list of secondary stats because the embellishment will provide a random secondary stat also the mastery stat does not enhance the dmg output
         List<String> secondaryStats = Arrays.asList("Haste", "Critical Strike", "Mastery", "Versatility");
+        // randomly select one stat from the list
         String selectedStat = secondaryStats.get(random.nextInt(secondaryStats.size()));
         Timer buffTimer = new Timer();
 
@@ -83,9 +84,15 @@ public class TrinketsOrEnchants {
                     // Increment the stack count
                     procCount.incrementAndGet();
                     System.out.println("Ascendance Embellishment procs: " + selectedStat + " increased by 89. Current stacks: " + procCount.get());
+
+
+                    if(procCount.get() == maxProcs){
+                        buffTimer.cancel();
+
+                    }
                 } else {
                     System.out.println("Ascendance Embellishment already at max stacks (10).");
-                    buffTimer.cancel();
+                    
                 }
             }
         }, 0, 8000);
