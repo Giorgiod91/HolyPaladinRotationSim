@@ -228,9 +228,9 @@ public class Paladin {
         }
 
         double totalDamage = baseDamage;
-        if(DawnLightIsActive == true){
-            baseDamage *= 1.05;
-
+        if (DawnLightIsActive) {
+            totalDamage *= 1.05;
+            System.out.println("5% increased damage from  Dawnlight.");
         }
 
 
