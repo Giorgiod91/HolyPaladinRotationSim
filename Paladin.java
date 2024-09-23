@@ -36,6 +36,7 @@ public class Paladin {
     private boolean JudgmentOnCooldown = false;
     private boolean crusaderStrikeOnCooldown = false;
     private boolean divineTollOnCooldown = false;
+    private boolean DawnLightIsActive =false;
 
 
     /// timers 
@@ -161,9 +162,11 @@ public class Paladin {
     }
 
     // Activate Avenging Wrath for increased crit chance
+    //:TODO: refactor the suns avatar dmg modifier to be in line with the current game patch
     public void AvengingWrath() {
         if (AvengingWrathIsUsed) return;
         if (hasSunsAvatarSkilled) {
+          
             double sunsAvatarDamage = 12 * (mainStat * 0.18);
             totalDamageOne += sunsAvatarDamage;
         }
@@ -182,9 +185,35 @@ public class Paladin {
             }
         }, 20000);
     }
+    // Simulate the damage from the Dawnlight ability
+
+    public void DawnLight(){
+        DawnLightIsActive = true;
+        
+        int baseDamage = (int) (mainStat * 3);
+        int partOfTheDamage = baseDamage /100 *8;
+        // this ability is up for 8 seconds
+        double totalDamage = 0;
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            int tickCount = 0;
+            @Override
+            public void run() {
+                double tickDamage = applyVersatilityAndCrit(baseDamage);
+                totalDamage += tickDamage;
+                totalDamageOne += tickDamage;
+                tickCount++;
+
+
+            }
+        },0, 1000); // 0 delay, repeat every 1000 ms
+
+    }
 
     // Simulate the Shield of the Righteous ability
     public int ShieldOfRighteous() {
+       
+
         if (holyPower < 3) {
             System.out.println("Not enough Holy Power!");
             return 0;
@@ -199,6 +228,11 @@ public class Paladin {
         }
 
         double totalDamage = baseDamage;
+        if(DawnLightIsActive == true){
+            baseDamage *= 1.05;
+
+        }
+
 
         // Apply Dusk and Dawn buff if active
         if (duskAndDawnActive) {
