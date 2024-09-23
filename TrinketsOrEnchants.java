@@ -5,6 +5,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
+//:TODO: add more trinkets to the class
+
 public class TrinketsOrEnchants {
 
     // If a spell is used, the trinket will provide the player with 159 main stat can stack up to 20 times and the buff will last forever in combat
