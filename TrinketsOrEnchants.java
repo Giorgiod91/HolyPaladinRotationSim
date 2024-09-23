@@ -54,6 +54,7 @@ public class TrinketsOrEnchants {
 
         // Creating a list of secondary stats because the embellishment will provide a random secondary stat also the mastery stat does not enhance the dmg output
         List<String> secondaryStats = Arrays.asList("Haste", "Critical Strike", "Mastery", "Versatility");
+        String selectedStat = secondaryStats.get(random.nextInt(secondaryStats.size()));
         Timer buffTimer = new Timer();
 
         buffTimer.scheduleAtFixedRate(new TimerTask() {
@@ -61,7 +62,7 @@ public class TrinketsOrEnchants {
             public void run() {
                 if (procCount.get() < maxProcs) {
                     // Randomly select a stat to increase
-                    String selectedStat = secondaryStats.get(random.nextInt(secondaryStats.size()));
+                   
 
                     // Apply the stat increase to the Paladin
                     switch (selectedStat) {

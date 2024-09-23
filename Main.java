@@ -14,7 +14,8 @@ public class Main {
 
         // Create enchants or trinket
         TrinketsOrEnchants trinket = new TrinketsOrEnchants();
-        trinket.RadiantPowerEnchant(holymoly);
+        //trinket.RadiantPowerEnchant(holymoly);
+        trinket.AscendanceEmbellishment(holymoly);
         
         // Using java scanner to get user input
         Scanner scanner = new Scanner(System.in);
