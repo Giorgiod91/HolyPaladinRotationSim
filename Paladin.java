@@ -350,6 +350,9 @@ public class Paladin {
         System.out.println("Holy Shock is on cooldown!");
         return totalHolyShockDamage; 
     }
+    if(hasSunsAvatarSkilled) {
+        critChance += 5;
+    }
 
     // Check if Rising Sunlight is active
     if (RisingSunlight) {
