@@ -39,6 +39,7 @@ public class Paladin {
     private boolean DawnLightIsActive =false;
     private boolean hasVenerationSkilled = false;
     private boolean critHappened = false;
+    private boolean hasMorningStarSkilled = true;
 
 
     /// timers 
@@ -204,10 +205,28 @@ public class Paladin {
             int tickCount = 0;
             @Override
             public void run() {
-                double tickDamage = applyVersatilityAndCrit(baseDamage);
+
+                double tickDamage;
+                if(tickCount ==0){
+                    // using the dmg modifier tthat icnreased the first hit of the dawnlight by 50%
+                    tickDamage = applyVersatilityAndCrit(baseDamage) * 1.5;
+                } else {
+                    // and else i use the regular default modfifiers
+                    tickDamage = applyVersatilityAndCrit(baseDamage);
+
+
+                }
+
+
+
+
                 totalDamage += tickDamage;
                 totalDamageOne += tickDamage;
                 tickCount++;
+
+                if(tickCount >=8){
+                    timer.cancel();
+                }
 
 
             }
