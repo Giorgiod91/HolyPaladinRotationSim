@@ -8,9 +8,9 @@ public class Main {
         // Creating a new Paladin instance
         Paladin holymoly = new Paladin();
         // Setting the main stat, versatility and crit of the Paladin
-        holymoly.setMainStat(60170);
-        holymoly.setVersatility(13670);
-        holymoly.setCritChance(19);
+        holymoly.setMainStat(66895);
+        holymoly.setVersatility(3740);
+        holymoly.setCritChance(23);
 
         // Create enchants or trinket
         TrinketsOrEnchants trinket = new TrinketsOrEnchants();
