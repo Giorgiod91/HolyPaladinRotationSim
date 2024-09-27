@@ -4,8 +4,8 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-//TODO: Create a priority list for the rotation 
-//TODO: refactor dmg m,odiufiers to be alligned with curent game patch value to keep up with class changes
+
+//TODO: add the check if judgment crits so then hammer of wrath can be freely used
 
 public class Paladin {
     private int holyPower = 0;
@@ -37,6 +37,8 @@ public class Paladin {
     private boolean crusaderStrikeOnCooldown = false;
     private boolean divineTollOnCooldown = false;
     private boolean DawnLightIsActive =false;
+    private boolean hasVenerationSkilled = false;
+    private boolean critHappened = false;
 
 
     /// timers 
@@ -54,6 +56,7 @@ public class Paladin {
     public int getTime() { return Time; }
     public boolean DoeshasSunsAvatarSkilled() { return hasSunsAvatarSkilled; }
     public void sethasSunsAvatarSkilled(boolean hasSunsAvatarSkilled) { this.hasSunsAvatarSkilled = hasSunsAvatarSkilled; }
+    public void sethasVenerationSkilled(boolean hasVenerationSkilled) {this.hasVenerationSkilled = hasVenerationSkilled;}
 
     // Start the timer to track the duration
     public void StartTimer() {
@@ -130,6 +133,8 @@ public class Paladin {
         double baseDamage = mainStat * 1.1067;
         // applying the buff from the latest patch notes hammer of wrath got buffed by 20%
         baseDamage *= 1.2;
+        
+       
         if (EnemyIsBelow20 || HammerOfWrathUsable) {
             double totalDamage = baseDamage;
             totalDamage = applyVersatilityAndCrit(totalDamage);
@@ -501,7 +506,9 @@ public class Paladin {
     private double applyVersatilityAndCrit(double baseDamage) {
         double versatilityPercent = versatility / 205.0;
         double versatilityBonus = baseDamage * versatilityPercent / 100.0;
-        double critMultiplier = random.nextDouble() < (critChance / 100.0) ? 2.0 : 1.0;
+        //crit chance depending on the crit value the user has and then double the damage if the crit appears to be true
+        double critMultiplier = random.nextDouble() < (critChance / 100.0) ? 2.0 : 1.0 ;
+        
         double hasteMultiplier = 1.0; // Haste not implemented yet
         return (baseDamage + versatilityBonus) * critMultiplier;
     }

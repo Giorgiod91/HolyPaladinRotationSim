@@ -26,6 +26,14 @@ public class Main {
         } else if (heraldYesOrNo.contains("no")) {
             holymoly.sethasSunsAvatarSkilled(false);
         }
+        Scanner scannerTwo = new Scanner(System.in);
+        System.out.print("veneration skilled ?");
+        String VenerationYesOrNo = scanner.nextLine();
+        if (VenerationYesOrNo.contains("yes")) {
+            holymoly.sethasVenerationSkilled(true);
+        }else if(VenerationYesOrNo.contains("no")){
+            holymoly.sethasVenerationSkilled(false);
+        }
 
         // Testing Crusader Strike to build Holy Power and potentially activate Dusk and Dawn
         // System.out.println("Testing Crusader Strike:");
