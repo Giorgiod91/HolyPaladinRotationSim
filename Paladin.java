@@ -72,6 +72,8 @@ public class Paladin {
     //creating a List to later filter out the the print statements cause there are many overlapping of them atm
      private List<String> printStatementsToFilter = new ArrayList<>();
 
+    //:TODO:: use some sorting algorithym to filter the needed values depending on the users need
+
 
     // Execute the basic rotation of abilities
     public void basicRotationForOneTarget() {
