@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Timer;
@@ -66,6 +68,10 @@ public class Paladin {
             public void run() { Time++; }
         }, 0, 1000);
     }
+
+    //creating a List to later filter out the the print statements cause there are many overlapping of them atm
+     private List<String> printStatementsToFilter = new ArrayList<>();
+
 
     // Execute the basic rotation of abilities
     public void basicRotationForOneTarget() {
@@ -140,7 +146,7 @@ public class Paladin {
             double totalDamage = baseDamage;
             totalDamage = applyVersatilityAndCrit(totalDamage);
             totalDamageOne += (int) totalDamage;
-            System.out.println("Hammer of Wrath damage: " + totalDamage);
+            printStatementsToFilter.add("Hammer of Wrath damage: " + totalDamage);
     
             // Start cooldown
             HammerOfWrathOnCooldown = true;
