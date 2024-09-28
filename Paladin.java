@@ -146,6 +146,7 @@ public class Paladin {
             double totalDamage = baseDamage;
             totalDamage = applyVersatilityAndCrit(totalDamage);
             totalDamageOne += (int) totalDamage;
+            // adding the print statement into the List so i can later filter and search for thos specific ones in the frontend depending on what the user wants to see
             printStatementsToFilter.add("Hammer of Wrath damage: " + totalDamage);
     
             // Start cooldown
@@ -169,7 +170,9 @@ public class Paladin {
         holyPower += 1;
         builderCount += 1;
         double totalDamage = applyVersatilityAndCrit(baseDamage);
-        System.out.println("Holy Prism damage: " + totalDamage);
+        // adding the print statement into the List so i can later filter and search for thos specific ones in the frontend depending on what the user wants to see
+        printStatementsToFilter.add("Holy Prism damage: " + totalDamage);
+        
         totalDamageOne += (int) totalDamage;
     }
 
@@ -276,7 +279,8 @@ public class Paladin {
         totalDamageOne += (int) totalDamage;
 
         shieldOfRighteousCount++;
-        System.out.println("Shield of the Righteous damage: " + totalDamage);
+        // adding the print statement into the List so i can later filter and search for thos specific ones in the frontend depending on what the user wants to see
+        printStatementsToFilter.add("Shield of the Righteous damage: " + totalDamage);       
         System.out.println("the amount of shield of the righteous are used" + shieldOfRighteousCount);
         return (int) totalDamage;
     }
@@ -301,8 +305,7 @@ public class Paladin {
             }
             totalDamage += tickDamage;
         }
-
-        System.out.println("Total Consecration damage: " + totalDamage);
+        printStatementsToFilter.add("Total Consecration damage: " + totalDamage);
         totalDamageOne += (int) totalDamage;
         return (int) totalDamage;
     }
@@ -348,7 +351,7 @@ public class Paladin {
         }
     
         double totalDamage = applyVersatilityAndCrit(baseDamage);
-        System.out.println("Crusader Strike damage: " + totalDamage);
+        printStatementsToFilter.add("Crusader Strike damage: " + totalDamage);
         totalDamageOne += (int) totalDamage;
     
         // Start cooldown
@@ -413,7 +416,7 @@ public class Paladin {
             }
 
             double totalDamage = applyVersatilityAndCrit(baseDamage);
-            System.out.println("Holy Shock damage: " + totalDamage);
+            printStatementsToFilter.add("Holy Shock damage: " + totalDamage);
             totalHolyShockDamage += (int) totalDamage;  
             totalDamageOne += (int) totalDamage;  
             holyShockOverAllDamage += (int) totalDamage;
@@ -470,9 +473,10 @@ public class Paladin {
     }
 
     //System.out.println("overall Holy Shock dmg :" );
-    System.out.println("Holy Shock damage: " + totalHolyShockDamage);
-    System.out.println("Overall Holy Shock damage: " + holyShockOverAllDamage);
+    printStatementsToFilter.add("total Holy Shock damage: " + totalHolyShockDamage);
+    printStatementsToFilter.add("Overall Holy Shock damage: " + holyShockOverAllDamage);
     
+      
     return totalHolyShockDamage;
    
 }
@@ -506,7 +510,8 @@ public class Paladin {
         }
 
         double totalDamage = applyVersatilityAndCrit(baseDamage);
-        System.out.println("Judgment damage: " + totalDamage);
+        printStatementsToFilter.add("Judgment damage: " + totalDamage);
+       
         totalDamageOne += (int) totalDamage;
 
         // Start cooldown
