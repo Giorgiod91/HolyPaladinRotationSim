@@ -51,6 +51,11 @@ public class Paladin {
     private Timer crusaderStrikeCooldownTimer = new Timer();
     private Timer divineTollCooldownTimer = new Timer();
 
+    // user input filter
+    private String theRealInput = "";
+    //user input
+    private String InputFromUser = "";
+
 
     // Getters and Setters
     public int getHolyShockCharges() { return holyShockCharges; }
@@ -69,10 +74,41 @@ public class Paladin {
         }, 0, 1000);
     }
 
+    //method to check what the user wants to display 
+
+    public void WhatToDisplay(String InputFromUser) {
+
+        // if the user wants to see the overall damage done by the abilities we have used 
+        if (InputFromUser.contains("overall damage")) {
+            System.out.println("The overall damage done by the abilities is: " + totalDamageOne);
+        }
+
+
+        // setting the methods local value to the instance variable 
+        this.InputFromUser = InputFromUser;
+    }
+
     //creating a List to later filter out the the print statements cause there are many overlapping of them atm
      private List<String> printStatementsToFilter = new ArrayList<>();
 
+    public void SortInputForUserNeeds() {
+        String userInput = ""; 
+        for (String printStatementsToFilter1 : printStatementsToFilter) {
+           
+        }
+        
+
+
+       
+    }
+
+
+
     //:TODO:: use some sorting algorithym to filter the needed values depending on the users need
+    // trying to do this 
+
+    
+
 
 
     // Execute the basic rotation of abilities

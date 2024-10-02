@@ -12,6 +12,9 @@ public class Main {
         holymoly.setVersatility(3740);
         holymoly.setCritChance(23);
 
+        
+
+
         // Create enchants or trinket
         TrinketsOrEnchants trinket = new TrinketsOrEnchants();
         //trinket.RadiantPowerEnchant(holymoly);
@@ -34,6 +37,8 @@ public class Main {
         }else if(VenerationYesOrNo.contains("no")){
             holymoly.sethasVenerationSkilled(false);
         }
+        Scanner scannerForDisplayOutput = new Scanner(System.in);
+        System.out.print("");
 
         // Testing Crusader Strike to build Holy Power and potentially activate Dusk and Dawn
         // System.out.println("Testing Crusader Strike:");
