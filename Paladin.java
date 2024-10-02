@@ -78,9 +78,74 @@ public class Paladin {
 
     public void WhatToDisplay(String InputFromUser) {
 
+        //::TODO:: switch up this if statement to a switch statement or something more efficient
+
         // if the user wants to see the overall damage done by the abilities we have used 
         if (InputFromUser.contains("overall damage")) {
             System.out.println("The overall damage done by the abilities is: " + totalDamageOne);
+        }
+        if (InputFromUser.contains("holy shock charges")) {
+            System.out.println("The amount of Holy Shock charges are: " + holyShockCharges);
+        }
+        if (InputFromUser.contains("holy power")) {
+            System.out.println("The amount of Holy Power is: " + holyPower);
+        }
+        if (InputFromUser.contains("time")) {
+            System.out.println("The time is: " + Time);
+        }
+        if (InputFromUser.contains("main stat")) {
+            System.out.println("The main stat is: " + mainStat);
+        }
+        if (InputFromUser.contains("versatility")) {
+            System.out.println("The versatility is: " + versatility);
+        }
+        if (InputFromUser.contains("crit chance")) {
+            System.out.println("The crit chance is: " + critChance);
+        }
+        if (InputFromUser.contains("haste")) {
+            System.out.println("The haste is: " + haste);
+        }
+        if (InputFromUser.contains("weapon damage")) {
+            System.out.println("The weapon damage is: " + weaponDamage);
+        }
+        if (InputFromUser.contains("shield of righteous count")) {
+            System.out.println("The amount of Shield of Righteous used is: " + shieldOfRighteousCount);
+        }
+        if (InputFromUser.contains("holy shock counter")) {
+            System.out.println("The amount of Holy Shock used is: " + holyShockCounter);
+        }
+        if (InputFromUser.contains("holy shock overall damage")) {
+            System.out.println("The overall damage done by Holy Shock is: " + holyShockOverAllDamage);
+        }
+        if (InputFromUser.contains("dusk and dawn active")) {
+            System.out.println("Dusk and Dawn is active: " + duskAndDawnActive);
+        }
+        if (InputFromUser.contains("rising sunlight active")) {
+            System.out.println("Rising Sunlight is active: " + RisingSunlight);
+        }
+        if (InputFromUser.contains("hammer of wrath usable")) {
+            System.out.println("Hammer of Wrath is usable: " + HammerOfWrathUsable);
+        }
+        if (InputFromUser.contains("enemy below 20")) {
+            System.out.println("Enemy is below 20%: " + EnemyIsBelow20);
+        }
+        if (InputFromUser.contains("hammer of wrath on cooldown")) {
+            System.out.println("Hammer of Wrath is on cooldown: " + HammerOfWrathOnCooldown);
+        }
+        if (InputFromUser.contains("holy shock on cooldown")) {
+            System.out.println("Holy Shock is on cooldown: " + HolyShockOnCooldown);
+        }
+        if (InputFromUser.contains("judgment on cooldown")) {
+            System.out.println("Judgment is on cooldown: " + JudgmentOnCooldown);
+        }
+        if (InputFromUser.contains("crusader strike on cooldown")) {
+            System.out.println("Crusader Strike is on cooldown: " + crusaderStrikeOnCooldown);
+        }
+        if (InputFromUser.contains("divine toll on cooldown")) {
+            System.out.println("Divine Toll is on cooldown: " + divineTollOnCooldown);
+        }
+        if (InputFromUser.contains("dawn light active")) {
+            System.out.println("Dawn Light is active: " + DawnLightIsActive);
         }
 
 
