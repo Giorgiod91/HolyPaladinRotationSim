@@ -232,6 +232,12 @@ public class Paladin {
         
        
     }
+    public void SacredWeapon() {
+        double baseDamage = mainStat * 1.04;
+
+
+    }
+
 
     // Simulate the Hammer of Wrath ability and its cooldown of 16 seconds
     public void HammerOfWrath() {
