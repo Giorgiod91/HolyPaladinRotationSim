@@ -8,6 +8,7 @@ import java.util.TimerTask;
 
 
 //TODO: add the check if judgment crits so then hammer of wrath can be freely used
+//TODO: add mehthod to create the chance to drop an extra Weapon with the lightsmith build 
 
 public class Paladin {
     private int holyPower = 0;
