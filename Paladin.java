@@ -24,6 +24,7 @@ public class Paladin {
     private int haste;
     private int weaponDamage;
     private int shieldOfRighteousCount = 0;
+    private int WeaponCharges = 1;	
    
     //booleans 
     private boolean hasSunsAvatarSkilled = false;
@@ -42,6 +43,7 @@ public class Paladin {
     private boolean hasVenerationSkilled = false;
     private boolean critHappened = false;
     private boolean hasMorningStarSkilled = true;
+    private boolean hasLightsmithSkilled = false;
 
 
     /// timers 
@@ -65,6 +67,7 @@ public class Paladin {
     public boolean DoeshasSunsAvatarSkilled() { return hasSunsAvatarSkilled; }
     public void sethasSunsAvatarSkilled(boolean hasSunsAvatarSkilled) { this.hasSunsAvatarSkilled = hasSunsAvatarSkilled; }
     public void sethasVenerationSkilled(boolean hasVenerationSkilled) {this.hasVenerationSkilled = hasVenerationSkilled;}
+    public void sethasLightsmithSkilled(boolean hasLightsmithSkilled) {this.hasLightsmithSkilled = hasLightsmithSkilled;}
 
     // Start the timer to track the duration
     public void StartTimer() {
@@ -234,6 +237,12 @@ public class Paladin {
     }
     public void SacredWeapon() {
         double baseDamage = mainStat * 1.04;
+        WeaponCharges --;
+        double totalDamage = applyVersatilityAndCrit(baseDamage);
+        totalDamageOne += (int) totalDamage;
+        printStatementsToFilter.add("Sacred Weapon damage: " + totalDamage);
+
+
 
 
     }
@@ -270,6 +279,8 @@ public class Paladin {
             }, 16000);
         }
     }
+
+     
     //holyprism method
     //TODO: add the prism aoe dmg !!!!
     public void HolyPrism() {

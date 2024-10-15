@@ -40,6 +40,17 @@ public class Main {
         Scanner scannerForDisplayOutput = new Scanner(System.in);
         System.out.print("");
 
+        //scanner for lightsmith check if so mainstat increased by default with 2% value
+        Scanner scannerThree = new Scanner(System.in);
+        System.out.print("Are you specced into Lightsmith ? Type yes or no: ");
+        String lightsmithYesOrNo = scanner.nextLine();
+        if (lightsmithYesOrNo.contains("yes")) {
+            holymoly.sethasLightsmithSkilled(true);
+            holymoly.setMainStat((int)(holymoly.getMainStat() * 1.02));
+        } else if (lightsmithYesOrNo.contains("no")) {
+            holymoly.sethasLightsmithSkilled(false);
+        }
+
         // Testing Crusader Strike to build Holy Power and potentially activate Dusk and Dawn
         // System.out.println("Testing Crusader Strike:");
         // for (int i = 0; i < 9; i++) {
