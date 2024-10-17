@@ -45,6 +45,7 @@ public class Paladin {
     private boolean critHappened = false;
     private boolean hasMorningStarSkilled = true;
     private boolean hasLightsmithSkilled = false;
+    private boolean spenderUsed = false;
 
 
     /// timers 
@@ -400,6 +401,8 @@ public class Paladin {
         totalDamageOne += (int) totalDamage;
 
         shieldOfRighteousCount++;
+        // set the spenderUsed variable to true for the modfier for the crusader strike method 
+        spenderUsed = true;	
         // adding the print statement into the List so i can later filter and search for thos specific ones in the frontend depending on what the user wants to see
         printStatementsToFilter.add("Shield of the Righteous damage: " + totalDamage);       
         System.out.println("the amount of shield of the righteous are used" + shieldOfRighteousCount);
@@ -465,7 +468,7 @@ public class Paladin {
         builderCount += 1;
         
         //check if we used a spender ability because that will trigger the Blessed Assurance buff that increases the next crusader strike by 200% only once
-        if(shieldOfRighteousCount > 0) {
+        if(spenderUsed == true) {
             baseDamage *= 2;
             shieldOfRighteousCount = 0;
         }
