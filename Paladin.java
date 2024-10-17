@@ -237,18 +237,36 @@ public class Paladin {
         
        
     }
+    //::TODO:: finish the Sacred Weapon method 
     public void SacredWeapon() {
-        double baseDamage = mainStat * 1.04;
-        WeaponCharges --;
-        double totalDamage = applyVersatilityAndCrit(baseDamage);
-        totalDamageOne += (int) totalDamage;
-        printStatementsToFilter.add("Sacred Weapon damage: " + totalDamage);
-
-
-
-
+        
+        double procChance = 0.3; 
+    
+        // Check if the Sacred Weapon procs
+        if (Math.random() <= procChance) {
+            double baseDamage = mainStat * 1.04;
+            WeaponCharges--;
+    
+            
+            double totalDamage = applyVersatilityAndCrit(baseDamage);
+            totalDamageOne += (int) totalDamage;
+            
+           
+           
+            //timer for sacred weapon to be ready again
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    WeaponCharges = 1;
+                    
+                }
+            }, 20000);
+        } else {
+            
+            printStatementsToFilter.add("Sacred Weapon did not proc this time.");
+        }
     }
-
 
     // Simulate the Hammer of Wrath ability and its cooldown of 16 seconds
     public void HammerOfWrath() {
