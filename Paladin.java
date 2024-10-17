@@ -246,10 +246,15 @@ public class Paladin {
         if (Math.random() <= procChance) {
             double baseDamage = mainStat * 1.04;
             WeaponCharges--;
+
+
+            
     
             
             double totalDamage = applyVersatilityAndCrit(baseDamage);
             totalDamageOne += (int) totalDamage;
+            // i double the damage here to simulate a talent that creates a new weapon on a random team member if the weapon is used
+            totalDamage *= 2;
             
            
            
