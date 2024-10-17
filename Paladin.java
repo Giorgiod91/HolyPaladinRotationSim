@@ -463,7 +463,13 @@ public class Paladin {
         baseDamage *= 1.6;
         holyPower += 1;
         builderCount += 1;
-    
+        
+        //check if we used a spender ability because that will trigger the Blessed Assurance buff that increases the next crusader strike by 200% only once
+        if(shieldOfRighteousCount > 0) {
+            baseDamage *= 2;
+            shieldOfRighteousCount = 0;
+        }
+        
         // Check if we have used 3 builders
         if (builderCount == 3) {
             duskAndDawnActive = true; 
