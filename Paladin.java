@@ -470,7 +470,7 @@ public class Paladin {
         //check if we used a spender ability because that will trigger the Blessed Assurance buff that increases the next crusader strike by 200% only once
         if(spenderUsed == true) {
             baseDamage *= 2;
-            shieldOfRighteousCount = 0;
+            spenderUsed = false;
         }
         
         // Check if we have used 3 builders
