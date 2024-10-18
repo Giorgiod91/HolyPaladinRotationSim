@@ -246,6 +246,14 @@ public class Paladin {
         double modifiedJudgementDamage = judgementDamage * 2.60;
 
 
+        // adding everything to get one overall dmg number to return and then be able to showcase the number
+        double BlessingDamage = modifiedCrusaderStrikeDamage + modifiedJudgementDamage;
+        System.out.print("Blessing of Summer dmg :" + BlessingDamage);
+
+
+
+
+
 
 
 
