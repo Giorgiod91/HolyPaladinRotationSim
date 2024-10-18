@@ -45,6 +45,13 @@ public class TrinketsOrEnchants {
         GaleOfShadows(paladin);
     }
 
+    // adding another dmg modifier a Trinket that increases the players Hase on Proc
+    public void UnboundChangeling(Paladin paladin) {
+        //:TODO: finish the trinket method it has a chance to proc 4490 haste for  12 seconds
+
+
+    }
+
     // This embellishment will provide the player with a random secondary stat by 89 for 15 seconds and it stacks up to 10 times every 8 seconds in combat
     // This buff will be up 100% cause the simulation is in for a full combat
     public void AscendanceEmbellishment(Paladin paladin) {
