@@ -235,6 +235,7 @@ public class Paladin {
     //::TODO:: Add the Blessing of Summer dmg convert healing into dmg
     // i will simualte this with a basic passive healing rotation because thats the most usual thing that would happen in a key 
     // will last 45 seconds
+    // this method will be added to the dmg later on as a full number so i simulate in an easy basic mode for easy usage later on
     public void BlessingOfSummer() {
         // array that keeps s simple rotation for some abilities
         double TruthPrevails = mainStat * 2.70;
@@ -244,7 +245,7 @@ public class Paladin {
         int judgementDamage = JudgeMent();
         double modifiedJudgementDamage = judgementDamage * 2.60;
 
-        
+
 
 
 
