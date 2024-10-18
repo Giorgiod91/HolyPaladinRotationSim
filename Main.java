@@ -50,7 +50,12 @@ public class Main {
         } else if (lightsmithYesOrNo.contains("no")) {
             holymoly.sethasLightsmithSkilled(false);
         }
-
+        Scanner scannerJudgementTalent = new Scanner(System.in);
+        System.out.print("Justification is talented ?");
+        String JustificationYesOrNo = scanner.nextLine();
+        if(JustificationYesOrNo.contains("yes")){
+            holymoly.crusaderStrike(baseDamge * 1.10)
+        }
         // Testing Crusader Strike to build Holy Power and potentially activate Dusk and Dawn
         // System.out.println("Testing Crusader Strike:");
         // for (int i = 0; i < 9; i++) {

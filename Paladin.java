@@ -233,7 +233,25 @@ public class Paladin {
     }
     
     //::TODO:: Add the Blessing of Summer dmg convert healing into dmg
+    // i will simualte this with a basic passive healing rotation because thats the most usual thing that would happen in a key 
+    // will last 45 seconds
     public void BlessingOfSummer() {
+        // array that keeps s simple rotation for some abilities
+        double TruthPrevails = mainStat * 2.70;
+        // calling the methods to get the dmg output of the ability cause i need to then convert some of the dmg into healing
+        int crusaderStrikeDamage = crusaderStrike();
+        double modifiedCrusaderStrikeDamage = crusaderStrikeDamage * 2.60;
+        int judgementDamage = JudgeMent();
+        double modifiedJudgementDamage = judgementDamage * 2.60;
+
+        
+
+
+
+        
+
+
+
         
        
     }
