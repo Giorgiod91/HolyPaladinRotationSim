@@ -237,7 +237,7 @@ public class Paladin {
     // will last 45 seconds
     // this method will be added to the dmg later on as a full number so i simulate in an easy basic mode for easy usage later on
     public void BlessingOfSummer() {
-        // array that keeps s simple rotation for some abilities
+        
         double TruthPrevails = mainStat * 2.70;
         // calling the methods to get the dmg output of the ability cause i need to then convert some of the dmg into healing
         int crusaderStrikeDamage = crusaderStrike();
@@ -247,8 +247,11 @@ public class Paladin {
 
 
         // adding everything to get one overall dmg number to return and then be able to showcase the number
+        //:TODO: need to add multiple uses of judgement() and crusaderStrike()
         double BlessingDamage = modifiedCrusaderStrikeDamage + modifiedJudgementDamage;
         System.out.print("Blessing of Summer dmg :" + BlessingDamage);
+
+
 
 
 
