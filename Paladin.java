@@ -284,9 +284,10 @@ public class Paladin {
     
             
             double totalDamage = applyVersatilityAndCrit(baseDamage);
-            totalDamageOne += (int) totalDamage;
+            
             // i double the damage here to simulate a talent that creates a new weapon on a random team member if the weapon is used
             totalDamage *= 2;
+            totalDamageOne += (int) totalDamage;
             
            
            
@@ -303,6 +304,8 @@ public class Paladin {
             
             printStatementsToFilter.add("Sacred Weapon did not proc this time.");
         }
+
+       
     }
 
     // Simulate the Hammer of Wrath ability and its cooldown of 16 seconds
