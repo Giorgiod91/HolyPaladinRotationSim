@@ -82,6 +82,7 @@ public class Paladin {
     }
 
     //method to check what the user wants to display 
+    //:TODO: consider creatin switch case instead !
 
     public void WhatToDisplay(String InputFromUser) {
 
