@@ -45,6 +45,7 @@ public class Paladin {
     private boolean critHappened = false;
     private boolean hasMorningStarSkilled = true;
     private boolean hasLightsmithSkilled = false;
+    private boolean hasJustificationSkilled = false;
     private boolean spenderUsed = false;
 
 
@@ -70,6 +71,7 @@ public class Paladin {
     public void sethasSunsAvatarSkilled(boolean hasSunsAvatarSkilled) { this.hasSunsAvatarSkilled = hasSunsAvatarSkilled; }
     public void sethasVenerationSkilled(boolean hasVenerationSkilled) {this.hasVenerationSkilled = hasVenerationSkilled;}
     public void sethasLightsmithSkilled(boolean hasLightsmithSkilled) {this.hasLightsmithSkilled = hasLightsmithSkilled;}
+    public void sethasJustificationSkilled(boolean hasJustificationSkilled) {this.hasJustificationSkilled = hasJustificationSkilled;}           
 
     // Start the timer to track the duration
     public void StartTimer() {
@@ -696,6 +698,12 @@ public class Paladin {
         printStatementsToFilter.add("Judgment damage: " + totalDamage);
        
         totalDamageOne += (int) totalDamage;
+        // if hasJustificationSkilled true means that its skilled so we can modifie the dmg number
+        if(hasJustificationSkilled == true) {
+            // 10% dmg increase 
+            totalDamage *= 1.1;
+
+        }
 
         // Start cooldown
         JudgmentOnCooldown = true;

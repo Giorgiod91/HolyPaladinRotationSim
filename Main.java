@@ -60,7 +60,12 @@ public class Main {
         System.out.print("Justification is talented ?");
         String JustificationYesOrNo = scanner.nextLine();
         if(JustificationYesOrNo.contains("yes")){
-            holymoly.crusaderStrike(baseDamge * 1.10)
+            // setting the Justification talent to true to later in the java paladin class to increase the damage of the judgement ability if its true
+            holymoly.sethasJustificationSkilled(true);
+            
+
+
+           
         }
         // Testing Crusader Strike to build Holy Power and potentially activate Dusk and Dawn
         // System.out.println("Testing Crusader Strike:");
