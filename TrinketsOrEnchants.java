@@ -53,6 +53,14 @@ public class TrinketsOrEnchants {
         TimerTask buffTimerTask = new TimerTask() {
             @Override
             public void run() {
+                // getting the haste chance first to then modify it with the buffed haste from the trinket metho
+                int newHasteChance = paladin.getHasteChance() + 4490;
+                // here then i set the newHaste value to the paladin class haste to work with it
+                paladin.setHasteChance(newHasteChance);
+
+
+
+
                 
 
 
