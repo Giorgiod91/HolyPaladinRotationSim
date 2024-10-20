@@ -48,6 +48,20 @@ public class TrinketsOrEnchants {
     // adding another dmg modifier a Trinket that increases the players Hase on Proc
     public void UnboundChangeling(Paladin paladin) {
         //:TODO: finish the trinket method it has a chance to proc 4490 haste for  12 seconds
+        Timer buffTimer = new Timer();
+
+        TimerTask buffTimerTask = new TimerTask() {
+            @Override
+            public void run() {
+                
+
+
+            }
+        };
+        // 12 second proc
+        buffTimer.scheduleAtFixedRate(buffTimerTask,0,12000);
+
+
 
 
     }
@@ -74,19 +88,13 @@ public class TrinketsOrEnchants {
 
                     // Apply the stat increase to the Paladin
                     switch (selectedStat) {
-                        case "Haste":
-                            paladin.setHasteChance(paladin.getHasteChance() + 89);
-                            break;
-                        case "Critical Strike":
-                            paladin.setCritChance(paladin.getCritChance() + 89);
-                            break;
-                        case "Mastery":
-                            // No action defined for Mastery
-                            break;
-                        case "Versatility":
-                            paladin.setVersatility(paladin.getVersatility() + 89);
-                            break;
+                        case "Haste" -> paladin.setHasteChance(paladin.getHasteChance() + 89);
+                        case "Critical Strike" -> paladin.setCritChance(paladin.getCritChance() + 89);
+                        case "Mastery" -> {
+                        }
+                        case "Versatility" -> paladin.setVersatility(paladin.getVersatility() + 89);
                     }
+                    // No action defined for Mastery
 
                     // Increment the stack count
                     procCount.incrementAndGet();
@@ -118,7 +126,7 @@ public class TrinketsOrEnchants {
         // Simulating the proc rate
         TimerTask procTask = new TimerTask() {
             @Override
-            public void run() {
+            public void run(){ 
                 if (procCount.get() < maxProcs) {
                     if (random.nextDouble() < procChance) {
                         int newMainStat = paladin.getMainStat() + 2230;
