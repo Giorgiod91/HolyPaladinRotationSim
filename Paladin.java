@@ -9,6 +9,7 @@ import java.util.TimerTask;
 
 //TODO: add the check if judgment crits so then hammer of wrath can be freely used
 //TODO: add mehthod to create the chance to drop an extra Weapon with the lightsmith build 
+//TODO: add the haste modifier and make it work with the methods to reduce the cast time aswell as the cooldown time
 
 public class Paladin {
     private int holyPower = 0;
@@ -673,6 +674,8 @@ public class Paladin {
     // Simulate Melee Attack
     public int MeleeAttack() {
         //TODO: add the melee attack dmg modifier
+        // cant find any data from how the melee works for the paladin will get some data and see if i can find a way
+        // to simulate it
 
     }
     
