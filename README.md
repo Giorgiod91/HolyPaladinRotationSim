@@ -1,21 +1,38 @@
-# Holy Paladin DPS Simulator
+# 🌟 Holy Paladin DPS Simulator
 
 ## Overview
         
-![Screenshot 2024-09-22 095756](https://github.com/user-attachments/assets/3594d2a2-e527-4072-a6fd-1a91b6efa96e)
 
-This project is a **Java-based rotation simulator** for optimizing the performance of my Holy Paladin in World of Warcraft (WoW). It provides a way to simulate Holy Paladin damage and healing rotations by using different spells, talents, and gear setups. The simulator outputs DPS calculations and helps analyze different builds in real-time using a **React frontend** that visualizes DPS changes.
+## 🎥 Demo Video
 
-The frontend is built with **React** and uses **Framer Motion** for smooth animations. It allows you to input your Paladin's stats (Intellect, Crit, Versatility), choose specific talents (like *Herald of the Sun* or *Lightsmith*), and simulate DPS changes dynamically.
+https://github.com/user-attachments/assets/a7d4d335-1f64-4ead-bc35-6919c3fa52e5
 
-## Features
 
-- **Real-time DPS Simulation**: Input your character stats and simulate DPS rotations in real-time.
-- **Stat Customization**: Modify main stats like Intellect, Crit, and Versatility to see how changes affect DPS output.
-- **Talent Selection**: Switch between key talents like *Herald of the Sun* or *Lightsmith* and observe their impact.
-- **Java Backend**: The backend is written in Java to handle spell rotations, cooldown management, and damage calculations.
-- **Interactive UI**: Built with React, the UI allows easy customization of character stats and provides animated results using Framer Motion.
 
-## Motivation
+The **Holy Paladin DPS Simulator** is a **Java-based** rotation simulator designed to optimize the performance of the Holy Paladin class in **World of Warcraft (WoW)**. This project allows players to simulate various damage and healing rotations using different spells, talents, and gear setups, providing real-time output for **DPS (Damage Per Second)** calculations.
 
-As a dedicated Holy Paladin player, I noticed the lack of existing tools to simulate damage outputs like those available for other classes. This limitation prompted me to develop my own simulator, enabling not just myself but other players to optimize their builds and enhance gameplay.
+### 🛠 Technology Stack
+
+- **Backend**: 
+  - **Java**: The backend is implemented in Java, handling the logic for spell rotations, cooldown management, and damage calculations.
+  - **Java Libraries**: Utilizes libraries for timers and data manipulation to accurately model game mechanics.
+
+- **Frontend**: 
+  - **React**: The frontend is built with React, providing a dynamic and responsive user interface for inputting character stats and selecting talents.
+  - **Framer Motion**: Implements smooth animations to enhance the user experience during DPS simulations.
+
+### 📸 Screenshot
+
+![Simulation Screenshot](https://github.com/user-attachments/assets/ebf7606b-088a-41e0-8f29-e41b180ae44e)
+
+## 🌈 Features
+
+- **⚔️ Real-time DPS Simulation**: Input your character stats and simulate DPS rotations dynamically.
+- **📊 Stat Customization**: Modify main stats like **Intellect**, **Crit**, and **Versatility** to see how changes affect your DPS output.
+- **🌟 Talent Selection**: Easily switch between key talents such as *Herald of the Sun* or *Lightsmith* and observe their impact on damage calculations.
+- **⏳ Cooldown Management**: Efficiently tracks ability cooldowns to provide accurate simulations of your damage potential.
+- **🖥️ Interactive User Interface**: The React-based UI allows for seamless customization of character stats and delivers animated results through Framer Motion.
+
+## 💡 Motivation
+
+As a dedicated **Holy Paladin** player, I recognized a significant gap in the tools available for simulating damage outputs, especially compared to other classes. This limitation motivated me to develop a tailored simulator that not only benefits my gameplay but also serves the broader community of Holy Paladin players. By enabling users to optimize their builds and analyze performance, I aim to enhance the overall gameplay experience.
