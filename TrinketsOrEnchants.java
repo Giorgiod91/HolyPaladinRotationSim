@@ -58,12 +58,7 @@ public class TrinketsOrEnchants {
                 // here then i set the newHaste value to the paladin class haste to work with it
                 paladin.setHasteChance(newHasteChance);
 
-
-
-
-                
-
-
+              
             }
         };
         // 12 second proc
