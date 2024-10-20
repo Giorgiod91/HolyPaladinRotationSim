@@ -36,8 +36,8 @@ public class TrinketsOrEnchants {
             }
         };
 
-        // Schedule the timer task to run when an ability is used
-        buffTimer.schedule(buffTimerTask, 0, 1000); // Example: every second for the simulation
+    
+        buffTimer.schedule(buffTimerTask, 0, 1000);
     }
 
     // Method to simulate ability usage that triggers the Gale of Shadows effect
@@ -47,7 +47,7 @@ public class TrinketsOrEnchants {
 
     // adding another dmg modifier a Trinket that increases the players Hase on Proc
     public void UnboundChangeling(Paladin paladin) {
-        //:TODO: finish the trinket method it has a chance to proc 4490 haste for  12 seconds
+      
         Timer buffTimer = new Timer();
 
         TimerTask buffTimerTask = new TimerTask() {
@@ -97,7 +97,7 @@ public class TrinketsOrEnchants {
                         }
                         case "Versatility" -> paladin.setVersatility(paladin.getVersatility() + 89);
                     }
-                    // No action defined for Mastery
+                   
 
                     // Increment the stack count
                     procCount.incrementAndGet();
