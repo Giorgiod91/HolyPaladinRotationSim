@@ -90,6 +90,7 @@ public class Paladin {
         //::TODO:: switch up this if statement to a switch statement or something more efficient
 
         // if the user wants to see the overall damage done by the abilities we have used 
+        // toLowerCase() to make sure that the input is not case sensitive
         if (InputFromUser.contains("overall damage")) {
             System.out.println("The overall damage done by the abilities is: " + totalDamageOne);
         }
@@ -165,11 +166,60 @@ public class Paladin {
     //creating a List to later filter out the the print statements cause there are many overlapping of them atm
      private List<String> printStatementsToFilter = new ArrayList<>();
 
-    public void SortInputForUserNeeds() {
-        String userInput = ""; 
-        for (String printStatementsToFilter1 : printStatementsToFilter) {
-           
+    public void SortInputForUserNeeds(String InputFromUser) {
+       
+        // creatin a switch case to filter out the print statements that the user wants to see
+        switch(InputFromUser.toLowerCase()){
+            case "overall damage":
+                System.out.println("The overall damage done by the abilities is: " + totalDamageOne);
+                break;
+            case "holy shock charges":
+                System.out.println("The amount of Holy Shock charges are: " + holyShockCharges);
+                break;
+            case "holy power":
+                System.out.println("The amount of Holy Power is: " + holyPower);
+                break;
+            case "time":
+                System.out.println("The time is: " + Time);
+                break;
+            case "main stat":
+                System.out.println("The main stat is: " + mainStat);
+                break;
+            case "versatility":
+                System.out.println("The versatility is: " + versatility);
+                break;
+            case "crit chance":
+                System.out.println("The crit chance is: " + critChance);
+                break;
+            case "haste":
+                System.out.println("The haste is: " + haste);
+                break;
+            case "weapon damage":
+                System.out.println("The weapon damage is: " + weaponDamage);
+                break;
+            case "shield of righteous count":
+                System.out.println("The amount of Shield of Righteous used is: " + shieldOfRighteousCount);
+                break;
+            case "holy shock counter":
+                System.out.println("The amount of Holy Shock used is: " + holyShockCounter);
+                break;
+            case "holy shock overall damage":
+                System.out.println("The overall damage done by Holy Shock is: " + holyShockOverAllDamage);
+                break;
+            case "dusk and dawn active":
+                System.out.println("Dusk and Dawn is active: " + duskAndDawnActive);
+                break;
+            case "rising sunlight active":
+                System.out.println("Rising Sunlight is active: " + RisingSunlight);
+                break;
+            case "hammer of wrath usable":
+                System.out.println("Hammer of Wrath is usable: " + HammerOfWrathUsable);
+                break;
+            
         }
+        // storing the input from the user into the instance variable to be able to use it later on
+        this.InputFromUser = InputFromUser;
+        
         
 
 
