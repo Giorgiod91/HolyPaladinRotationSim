@@ -409,6 +409,7 @@ public class Paladin {
         totalDamageOne += (int) totalDamage;
     }
 
+
     // Activate Avenging Wrath for increased crit chance
     //:TODO: refactor the suns avatar dmg modifier to be in line with the current game patch
     public void AvengingWrath() {
@@ -433,6 +434,25 @@ public class Paladin {
             }
         }, 20000);
     }
+
+    // the other option if avenging wrath is not skilled
+
+    public void MeleeWings() {
+        HammerOfWrathUsable = true;
+        holyShockCharges += 3;
+        
+        crusaderStrike();
+        // let crusader strike and judgment cooldown 30% faster
+
+        
+
+
+
+    }
+
+
+
+
     // Simulate the damage from the Dawnlight ability
 
     public void DawnLight(){
