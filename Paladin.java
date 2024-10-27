@@ -340,6 +340,7 @@ public class Paladin {
             // i double the damage here to simulate a talent that creates a new weapon on a random team member if the weapon is used
             totalDamage *= 2;
             totalDamageOne += (int) totalDamage;
+            System.out.println("weapon procced or used ! and does" + totalDamage + "dmg");
             
            
            
@@ -356,7 +357,7 @@ public class Paladin {
             
             printStatementsToFilter.add("Sacred Weapon did not proc this time.");
         }
-
+        
        
     }
 

@@ -8,14 +8,14 @@ public class Main {
         // Creating a new Paladin instance
         Paladin holymoly = new Paladin();
         // Setting the main stat, versatility and crit of the Paladin
-        holymoly.setMainStat(66895);
+        holymoly.setMainStat(70394);
         // a default pick Talent is to increase the players mainstat by 4%
         double increasedMainStat = holymoly.getMainStat() * 1.04;
 
         // Set the updated main stat with the increase
         holymoly.setMainStat((int) increasedMainStat);
 
-        holymoly.setVersatility(3740);
+        holymoly.setVersatility(5684);
         holymoly.setCritChance(23);
 
         
