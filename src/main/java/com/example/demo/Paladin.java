@@ -1,3 +1,6 @@
+package com.example.demo;
+
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -455,13 +458,15 @@ public class Paladin {
 
     // Simulate the damage from the Dawnlight ability
 
+    private double dawnLightTotalDamage = 0;
+
     public void DawnLight(){
         DawnLightIsActive = true;
         
         int baseDamage = (int) (mainStat * 3);
         int partOfTheDamage = baseDamage /100 *8;
         // this ability is up for 8 seconds
-        double totalDamage = 0;
+        dawnLightTotalDamage = 0;
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             int tickCount = 0;
@@ -482,7 +487,7 @@ public class Paladin {
 
 
 
-                totalDamage += tickDamage;
+                dawnLightTotalDamage += tickDamage;
                 totalDamageOne += tickDamage;
                 tickCount++;
 
@@ -747,6 +752,7 @@ public class Paladin {
         //TODO: add the melee attack dmg modifier
         // cant find any data from how the melee works for the paladin will get some data and see if i can find a way
         // to simulate it
+        return totalDamageOne;
 
     }
     
