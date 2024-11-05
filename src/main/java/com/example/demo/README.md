@@ -1,6 +1,7 @@
 # 🌟 Holy Paladin DPS Simulator
 
 ## Overview
+The Holy Paladin DPS Simulator is a Java-based backend tool designed to help World of Warcraft (WoW) players simulate and optimize their damage rotations for the Holy Paladin class. It allows users to input character stats and simulate real-world abilities, talents, and gear effects, ultimately providing recommendations on the best ability rotation and estimating Damage Per Second (DPS) output.
         
 
 ## 🎥 Demo Video
@@ -9,16 +10,14 @@ https://github.com/user-attachments/assets/a7d4d335-1f64-4ead-bc35-6919c3fa52e5
 
 
 
-The **Holy Paladin DPS Simulator** is a **Java-based** rotation simulator designed to optimize the performance of the Holy Paladin class in **World of Warcraft (WoW)**. This project allows players to simulate various damage and healing rotations using different spells, talents, and gear setups, providing real-time output for **DPS (Damage Per Second)** calculations.
-
 ### 🛠 Technology Stack
 
 - **Backend**: 
   - **Java**: The backend is implemented in Java, handling the logic for spell rotations, cooldown management, and damage calculations.
-  - **Java Libraries**: Utilizes libraries for timers and data manipulation to accurately model game mechanics.
+  - **HashMaps and Collections**: Used extensively for managing ability priorities, modifiers, and cooldowns.
 
 - **Frontend**: 
-  - **React**: The frontend is built with React, providing a dynamic and responsive user interface for inputting character stats and selecting talents.
+  - **React- Next.js**: The frontend is built with Next.js and Typescript
   - **Framer Motion**: Implements smooth animations to enhance the user experience during DPS simulations.
 
 ### 📸 Screenshot
