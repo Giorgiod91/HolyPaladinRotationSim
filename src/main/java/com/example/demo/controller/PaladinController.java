@@ -24,6 +24,16 @@ public class PaladinController {
     public Paladin getPaladinStats() {
         return paladinService.getPaladinStats();
     }
+    @GetMapping("/usageCounter")  // New endpoint to get the usage counter
+    public int getUsageCounter() {
+        return paladinService.getUsageCounter();
+    }
+
+    @PostMapping("/setCounter")
+    public void incrementUsageCounter() {
+        paladinService.incrementUsageCounter();  // This will increment the counter each time this endpoint is hit
+    }
+
 
     // Change to @RequestBody to handle JSON payload
     @PostMapping("/setMainStat")

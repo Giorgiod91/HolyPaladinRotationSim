@@ -14,6 +14,7 @@ public class PaladinService {
     private Paladin holymoly = new Paladin();
     private TrinketsOrEnchants trinket = new TrinketsOrEnchants();
     private Timer testTimer;
+    private int usageCounter = 0; // to count the number of users in a simple way for now 
 
     public void initializePaladin() {
         // Setting initial stats and attributes for Paladin
@@ -53,5 +54,15 @@ public class PaladinService {
 
     public void setMainStat(int mainStat) {
         holymoly.setMainStat(mainStat);
+    }
+
+    // Method to increment usage counter
+    public void incrementUsageCounter() {
+        usageCounter++;
+    }
+
+    // Method to get the current usage count
+    public int getUsageCounter() {
+        return usageCounter;
     }
 }
