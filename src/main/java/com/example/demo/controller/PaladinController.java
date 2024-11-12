@@ -1,10 +1,9 @@
 package com.example.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Paladin;
@@ -16,7 +15,6 @@ public class PaladinController {
 
     private final PaladinService paladinService;
 
-    @Autowired
     public PaladinController(PaladinService paladinService) {
         this.paladinService = paladinService;
         paladinService.initializePaladin(); // Initialize paladin on startup
@@ -27,22 +25,61 @@ public class PaladinController {
         return paladinService.getPaladinStats();
     }
 
+    // Change to @RequestBody to handle JSON payload
     @PostMapping("/setMainStat")
-    public void setMainStat(@RequestParam int mainStat) {
-        paladinService.setMainStat(mainStat);
+    public void setMainStat(@RequestBody MainStatRequest body) {
+        paladinService.setMainStat(body.getMainStat());
     }
+
     @PostMapping("/setCrit")
-    public void setCrit(@RequestParam int crit) {
-    paladinService.getPaladinStats().setCritChance(crit);
+    public void setCrit(@RequestBody CritRequest body) {
+        paladinService.getPaladinStats().setCritChance(body.getCrit());
     }
 
     @PostMapping("/setVersatility")
-    public void setVersatility(@RequestParam int versatility) {
-    paladinService.getPaladinStats().setVersatility(versatility);
+    public void setVersatility(@RequestBody VersatilityRequest body) {
+        paladinService.getPaladinStats().setVersatility(body.getVersatility());
     }
 
     @GetMapping("/simulate")
     public String simulate() {
         return paladinService.runSimulation();
+    }
+}
+
+// DTO classes to map the incoming request bodies
+class MainStatRequest {
+    private int mainStat;
+
+    public int getMainStat() {
+        return mainStat;
+    }
+
+    public void setMainStat(int mainStat) {
+        this.mainStat = mainStat;
+    }
+}
+
+class CritRequest {
+    private int crit;
+
+    public int getCrit() {
+        return crit;
+    }
+
+    public void setCrit(int crit) {
+        this.crit = crit;
+    }
+}
+
+class VersatilityRequest {
+    private int versatility;
+
+    public int getVersatility() {
+        return versatility;
+    }
+
+    public void setVersatility(int versatility) {
+        this.versatility = versatility;
     }
 }
