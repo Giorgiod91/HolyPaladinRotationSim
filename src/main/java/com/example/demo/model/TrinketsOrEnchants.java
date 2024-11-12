@@ -118,6 +118,36 @@ public class TrinketsOrEnchants {
         }, 0, 8000);
     }
 
+    public void EmpoweringCrystal(Paladin paladin) {
+
+        Random random = new Random();
+
+        List<String> secondaryStats = Arrays.asList("Haste", "Critical Strike", "Mastery", "Versatility");
+        String selectedStat = secondaryStats.get(random.nextInt(secondaryStats.size()));
+
+
+        Timer buffTimer = new Timer();
+
+        buffTimer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+
+                switch (selectedStat) {
+                    case "Haste" -> paladin.setHasteChance(paladin.getHasteChance() + 89);
+                    case "Critical Strike" -> paladin.setCritChance(paladin.getCritChance() + 89);
+                    case "Mastery" -> {
+                    }
+                    case "Versatility" -> paladin.setVersatility(paladin.getVersatility() + 89);
+                }
+               
+
+
+            }
+            
+        },0, 20000);
+
+    }
+
     // This enchant will provide a damage proc and can occur up to 2 times
     public void RadiantPowerEnchant(Paladin paladin) {
         int damageProc = 130689;
