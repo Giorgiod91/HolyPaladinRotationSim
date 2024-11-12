@@ -31,6 +31,15 @@ public class PaladinController {
     public void setMainStat(@RequestParam int mainStat) {
         paladinService.setMainStat(mainStat);
     }
+    @PostMapping("/setCrit")
+    public void setCrit(@RequestParam int crit) {
+    paladinService.getPaladinStats().setCritChance(crit);
+    }
+
+    @PostMapping("/setVersatility")
+    public void setVersatility(@RequestParam int versatility) {
+    paladinService.getPaladinStats().setVersatility(versatility);
+    }
 
     @GetMapping("/simulate")
     public String simulate() {
