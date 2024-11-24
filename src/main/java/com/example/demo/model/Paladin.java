@@ -51,6 +51,7 @@ public class Paladin {
     private boolean hasLightsmithSkilled = false;
     private boolean hasJustificationSkilled = false;
     private boolean spenderUsed = false;
+    private boolean HolyPowerAbilityCasted = false;
 
 
     /// timers 
@@ -448,6 +449,7 @@ public class Paladin {
     // the other option if avenging wrath is not skilled
 
     public void MeleeWings() {
+        boolean oneTimeSacredWeapon = false;
         HammerOfWrathUsable = true;
         holyShockCharges += 3;
         
@@ -510,6 +512,10 @@ public class Paladin {
 
     // Simulate the Shield of the Righteous ability
     public int ShieldOfRighteous() {
+
+
+         //holypower ability set to true 
+         HolyPowerAbilityCasted = true;
        
 
         if (holyPower < 3) {
@@ -546,9 +552,15 @@ public class Paladin {
         shieldOfRighteousCount++;
         // set the spenderUsed variable to true for the modfier for the crusader strike method 
         spenderUsed = true;	
+       
+
+
         // adding the print statement into the List so i can later filter and search for thos specific ones in the frontend depending on what the user wants to see
         printStatementsToFilter.add("Shield of the Righteous damage: " + totalDamage);       
         System.out.println("the amount of shield of the righteous are used" + shieldOfRighteousCount);
+
+        // set it back to false
+        HolyPowerAbilityCasted = false;
         return (int) totalDamage;
     }
 
