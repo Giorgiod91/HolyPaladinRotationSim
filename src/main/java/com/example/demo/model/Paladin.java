@@ -416,11 +416,18 @@ public class Paladin {
     // Activate Avenging Wrath for increased crit chance
     //:TODO: refactor the suns avatar dmg modifier to be in line with the current game patch
     public void AvengingWrath() {
+        // defining a boolean to later use an ability one time on top of the method
+        boolean oneTimeSacredWeapon = false;
         if (AvengingWrathIsUsed) return;
+        // check if a specific hero talent is skilled that increases the dmg
         if (hasSunsAvatarSkilled) {
           
             double sunsAvatarDamage = 12 * (mainStat * 0.18);
             totalDamageOne += sunsAvatarDamage;
+        }
+        if(hasLightsmithSkilled && oneTimeSacredWeapon == false){
+            SacredWeapon();
+            oneTimeSacredWeapon = true;
         }
         HammerOfWrathUsable = true;
         RisingSunlight = true;
