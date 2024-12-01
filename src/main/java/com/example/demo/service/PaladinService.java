@@ -18,10 +18,11 @@ public class PaladinService {
 
     public void initializePaladin() {
         // Setting initial stats and attributes for Paladin
-        holymoly.setMainStat(70394);
-        holymoly.setMainStat((int) (holymoly.getMainStat() * 1.04)); // Increase by 4%
-        holymoly.setVersatility(5684);
-        holymoly.setCritChance(23);
+        holymoly.setMainStat(71160);
+        holymoly.setMainStat((int) (holymoly.getMainStat() * 1.04)); // Increase by 4% cause i simulate with the lightsmith enchant
+        //::TODO: change the mainstat 4% to be  picked over input or something !
+        holymoly.setVersatility(5400);
+        holymoly.setCritChance(22);
         trinket.AscendanceEmbellishment(holymoly);
     }
 
