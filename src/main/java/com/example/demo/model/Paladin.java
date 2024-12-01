@@ -250,7 +250,7 @@ public class Paladin {
         abilityPriorities.put("ShieldOfRighteous", 5);
         abilityPriorities.put("crusaderStrike", 6);
         abilityPriorities.put("holyShock", 7);
-        abilityPriorities.put("HammerOfWrath", 8);
+       
 
         if(!consecrationActive) {
             abilityPriorities.put("Consecration", 1);
@@ -287,7 +287,7 @@ public class Paladin {
             System.out.println("Holy Shock is on cooldown.");
         }
     
-        HammerOfWrath();
+        
     }
     
     //::TODO:: Add the Blessing of Summer dmg convert healing into dmg
@@ -366,6 +366,7 @@ public class Paladin {
     }
 
     // Simulate the Hammer of Wrath ability and its cooldown of 16 seconds
+    //::TODO: refactor this method to return something that i can work with it !
     public void HammerOfWrath() {
         if (HammerOfWrathOnCooldown) {
             System.out.println("Hammer of Wrath is on cooldown!");
@@ -382,7 +383,8 @@ public class Paladin {
             totalDamage = applyVersatilityAndCrit(totalDamage);
             totalDamageOne += (int) totalDamage;
             // adding the print statement into the List so i can later filter and search for thos specific ones in the frontend depending on what the user wants to see
-            printStatementsToFilter.add("Hammer of Wrath damage: " + totalDamage);
+            String result = "Hammer of Wrath damage: " + totalDamage;
+            printStatementsToFilter.add(result);
     
             // Start cooldown
             HammerOfWrathOnCooldown = true;
@@ -394,7 +396,12 @@ public class Paladin {
                     System.out.println("Hammer of Wrath is ready to use again.");
                 }
             }, 16000);
+
+          
+            
         }
+        
+        
     }
 
      
@@ -414,7 +421,7 @@ public class Paladin {
     }
 
 
-    // Activate Avenging Wrath for increased crit chance
+    // Activate Avenging Wrath for increased crit chance it will directly modifie the other methods
     //:TODO: refactor the suns avatar dmg modifier to be in line with the current game patch
     public void AvengingWrath() {
         // defining a boolean to later use an ability one time on top of the method
