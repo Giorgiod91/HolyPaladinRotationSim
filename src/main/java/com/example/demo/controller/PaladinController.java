@@ -1,5 +1,9 @@
 package com.example.demo.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -52,9 +56,18 @@ public class PaladinController {
     }
 
     @GetMapping("/simulate")
-    public String simulate() {
-        return paladinService.runSimulation();
+    public ResponseEntity<Map<String, String>> simulate() {
+    // Run the simulation and get the result as a String
+    String simulationResult = paladinService.runSimulation();
+
+    // Prepare the response data in a map
+    Map<String, String> response = new HashMap<>();
+    response.put("result", simulationResult);
+
+    // Return the response as a JSON object
+    return ResponseEntity.ok(response);
     }
+
 }
 
 // DTO classes to map the incoming request bodies

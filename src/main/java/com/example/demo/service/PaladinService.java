@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.CountDownLatch;
 
 import org.springframework.stereotype.Service;
 
@@ -26,28 +27,40 @@ public class PaladinService {
         trinket.AscendanceEmbellishment(holymoly);
     }
 
-    public String runSimulation() {
-        // Start the timer
-        holymoly.StartTimer();
-        
-        // Run the simulation for 60 seconds
-        testTimer = new Timer();
-        StringBuilder results = new StringBuilder();
-        testTimer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                holymoly.basicRotationForOneTarget();
-                results.append("Time is: ").append(holymoly.getTime()).append("\n");
-                results.append("The Overall Damage is: ").append(holymoly.OverAllDamage()).append("\n");
-                results.append("DPS damage per second: ").append(holymoly.OverAllDamage() / holymoly.getTime()).append("\n");
-                if (holymoly.getTime() > 30) {
-                    testTimer.cancel();
-                }
-            }
-        }, 0, 1000);
+   public synchronized String runSimulation() {
+    // i took the latch part moslty from a boilerplate 
+    // Start the timer
+    holymoly.StartTimer();
 
-        return results.toString();
+    // Run the simulation for 60 seconds
+    testTimer = new Timer();
+    StringBuilder results = new StringBuilder();
+    
+    // Using a CountDownLatch or another mechanism to wait until the timer finishes withouth that i couldnt get the return value has to work asynchron
+    final CountDownLatch latch = new CountDownLatch(1);
+    
+    testTimer.scheduleAtFixedRate(new TimerTask() {
+        @Override
+        public void run() {
+            holymoly.basicRotationForOneTarget();
+            results.append("Time is: ").append(holymoly.getTime()).append("\n");
+            results.append("The Overall Damage is: ").append(holymoly.OverAllDamage()).append("\n");
+            results.append("DPS damage per second: ").append(holymoly.OverAllDamage() / holymoly.getTime()).append("\n");
+            if (holymoly.getTime() > 30) {
+                testTimer.cancel();
+                latch.countDown();  // Signal that simulation is complete then it lets the main thread to continue
+            }
+        }
+    }, 0, 1000);
+
+    try {
+        latch.await();  // Wait for the simulation to complete so it block the main thread until countDown is called
+    } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
     }
+
+    return results.toString();
+}
 
     public Paladin getPaladinStats() {
         return holymoly; 
