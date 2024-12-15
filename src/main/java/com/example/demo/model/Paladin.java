@@ -579,6 +579,8 @@ public class Paladin {
         consecrationActive = true;
 
         double baseDamage = mainStat * 0.05;
+        //applying recent buff with the patch 11.0.7 to the ability buffed by 30%
+        baseDamage *= 1.3;
         double versatilityPercent = versatility / 205.0;
         double versatilityBonus = baseDamage * versatilityPercent / 100.0;
         double critMultiplier = 2.0;
