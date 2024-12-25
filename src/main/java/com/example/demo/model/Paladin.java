@@ -632,8 +632,9 @@ public class Paladin {
         builderCount += 1;
         
         //check if we used a spender ability because that will trigger the Blessed Assurance buff that increases the next crusader strike by 200% only once
+        // okay this abilitz just got nerfed with the upcoming new season TWWS2 to 30&
         if(spenderUsed == true) {
-            baseDamage *= 2;
+            baseDamage *= 1.3;
             spenderUsed = false;
         }
         
