@@ -696,7 +696,7 @@ public class Paladin {
 
             System.out.println("Holy Shock cast #" + holyShockCounter);
 
-            int baseDamage = (int) (mainStat * 1.08);
+            int baseDamage = (int) (mainStat * 1.08 * 2);
             holyPower += 1;
             builderCount += 1;
             holyShockOverAllDamage += baseDamage;
