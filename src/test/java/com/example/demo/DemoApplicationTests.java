@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.example.demo.model.Paladin;
 @SpringBootTest
 class DemoApplicationTests {
+	//::TODO: test the dmg output with the current buffs from the path 11.0 !
 
 	@Test
 	void testHolyShock() {
@@ -20,6 +21,7 @@ class DemoApplicationTests {
 
 
 		assertThat(totalDamage).isGreaterThan(0);
+		System.out.println("holyshock dmg is:" + totalDamage);
 	}
 
 }
