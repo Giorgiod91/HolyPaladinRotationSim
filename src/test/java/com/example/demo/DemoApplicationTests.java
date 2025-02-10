@@ -23,5 +23,17 @@ class DemoApplicationTests {
 		assertThat(totalDamage).isGreaterThan(0);
 		System.out.println("holyshock dmg is:" + totalDamage);
 	}
+	@Test 
+	void testDamageModifer(){
+		Paladin paladin = new Paladin();
+		paladin.setMainStat(20000);
+		paladin.setCritChance(20);
+		paladin.setVersatility(20);
+		//check if ingame dmg matches the calculated one
+		paladin.basicRotationForOneTarget();
+
+	}
+
+
 
 }
