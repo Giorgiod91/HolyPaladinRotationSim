@@ -7,7 +7,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicInteger;
 
-//:TODO: add more trinkets to the class
+//:TODO: add Season 2 Trinkets !!!! 
 
 public class TrinketsOrEnchants {
 
@@ -147,6 +147,11 @@ public class TrinketsOrEnchants {
         },0, 20000);
 
     }
+
+    
+
+
+
 
     // This enchant will provide a damage proc and can occur up to 2 times
     public void RadiantPowerEnchant(Paladin paladin) {
