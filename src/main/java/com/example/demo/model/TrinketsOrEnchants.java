@@ -118,6 +118,36 @@ public class TrinketsOrEnchants {
         }, 0, 8000);
     }
 
+
+
+    public void SignetOfThePriory(Paladin paladin) {
+        // get stats first cause this Trinket increased onClick the highest stat u have by a large amount
+       int highestStat = paladin.gethighestStat();
+        
+       paladin.sethighestStat(highestStat, highestStat + 2765);
+        Timer buffTimer = new Timer();
+
+        // TimerTask to increase main stat on ability use
+        TimerTask buffTimerTask = new TimerTask() {
+            @Override
+            public void run() {
+                // increase the highest stat for 2765
+                paladin.sethighestStat(highestStat, highestStat + 2765);
+                
+            }
+        };
+
+    
+        buffTimer.schedule(buffTimerTask, 0, 2000);
+    }
+
+
+
+ 
+
+
+
+
     public void EmpoweringCrystal(Paladin paladin) {
 
         Random random = new Random();

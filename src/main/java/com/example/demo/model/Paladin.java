@@ -853,6 +853,29 @@ public class Paladin {
     public void setCritChance(int critChance) { this.critChance = critChance; }
     public void setHasteChance(int hasteChance) { this.critChance = hasteChance; }
 
+    public void sethighestStat(int highestStat, int value) {
+
+        int highest = gethighestStat();
+
+        if (mainStat == highest) {
+            mainStat = value;
+        } else if (haste == highest) {
+            haste = value;
+        } else if (critChance == highest) {
+            critChance = value;
+        } else if (versatility == highest) {
+            versatility = value;
+        }
+
+
+    }
+
+
+    // get highest stat thats needed cause alot of modifieres work with the highest stat
+    public int gethighestStat() {
+        return Math.max(Math.max(mainStat, haste), Math.max(critChance, versatility));
+    }
+
     //getters for stats
     public int getMainStat() {
         return mainStat;
