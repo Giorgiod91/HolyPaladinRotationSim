@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.example.demo.controller.PaladinController;
 import com.example.demo.model.Paladin;
 @SpringBootTest
 class DemoApplicationTests {
@@ -32,7 +33,38 @@ class DemoApplicationTests {
 		//check if ingame dmg matches the calculated one
 		paladin.basicRotationForOneTarget();
 
+
+
 	}
+
+	// test if the highest stat method work
+	@Test
+	void testHighestStatGetterSetter(){
+		Paladin paladin = new Paladin();
+		paladin.setMainStat(6);
+		paladin.setCritChance(40);
+		paladin.setVersatility(20);
+
+		int shouldBeHighest = paladin.gethighestStat();
+
+		assertThat(shouldBeHighest).isEqualTo(40);
+	}
+
+
+
+	// test the trinket if it really increases the highest
+	@Test
+	void testtrinket(){
+		Paladin paladin = new Paladin();
+		paladin.setMainStat(6);
+		paladin.setCritChance(40);
+		paladin.setVersatility(20);
+
+		paladin.
+
+		assertThat(shouldBeHighest).isEqualTo(40);
+	}
+
 
 
 
