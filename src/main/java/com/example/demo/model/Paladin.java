@@ -250,6 +250,11 @@ public class Paladin {
         abilityPriorities.put("ShieldOfRighteous", 5);
         abilityPriorities.put("crusaderStrike", 6);
         abilityPriorities.put("holyShock", 7);
+
+
+        // whatever is the highest dmg should get the highest priority
+        int highestDmg = 0;
+
        
 
         if(!consecrationActive) {
@@ -274,6 +279,7 @@ public class Paladin {
         }
         System.out.println("Current crit is: " + critChance);
         JudgeMent();
+        highestDmg = JudgeMent();
         divineToll();
         ShieldOfRighteous();
         crusaderStrike();

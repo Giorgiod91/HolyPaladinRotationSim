@@ -64,6 +64,20 @@ class DemoApplicationTests {
 
 		assertThat(shouldBeHighest).isEqualTo(40);
 	}
+	// HolyShock should be prio with the current tuning
+	@Test
+	void testIfHolyShockIsPrio() {
+		Paladin paladin = new Paladin();
+		paladin.setMainStat(20000);
+		paladin.setCritChance(20);
+		paladin.setVersatility(20);
+		String[] prio = paladin.prioRotation(abilities);
+	
+
+
+
+	}
+		
 
 
 
