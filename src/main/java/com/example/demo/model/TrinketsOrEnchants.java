@@ -177,6 +177,33 @@ public class TrinketsOrEnchants {
         },0, 20000);
 
     }
+    /// mugs moxie jug trinket
+    
+    public void mugsMoxie(Paladin paladin) {
+        // get stats first cause this Trinket increased onClick the highest stat u have by a large amount
+       
+        
+      
+        Timer buffTimer = new Timer();
+
+        // TimerTask to increase main stat on ability use
+        TimerTask buffTimerTask = new TimerTask() {
+            @Override
+            public void run() {
+                // increase critt stat for 2765
+                int newCritChance = paladin.getCritChance() + 765;
+                // the tricky part here is grants an additional 765 Critical Strike for each spell used
+                paladin.setCritChance(newCritChance);
+                //::TODO:: add a this function 
+
+                
+                
+            }
+        };
+
+        //15 second timer for the trinket
+        buffTimer.schedule(buffTimerTask, 0, 1500);
+    }
 
     
 
