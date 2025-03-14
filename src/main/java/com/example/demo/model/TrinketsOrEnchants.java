@@ -190,11 +190,17 @@ public class TrinketsOrEnchants {
         TimerTask buffTimerTask = new TimerTask() {
             @Override
             public void run() {
+                // variable to track is a spell us used
+                boolean spellUsed = false;
                 // increase critt stat for 2765
                 int newCritChance = paladin.getCritChance() + 765;
                 // the tricky part here is grants an additional 765 Critical Strike for each spell used
                 paladin.setCritChance(newCritChance);
                 //::TODO:: add a this function 
+                if(spellUsed){
+                    int newCritChance2 = paladin.getCritChance() + 765;
+                    paladin.setCritChance(newCritChance2);
+                }
 
                 
                 
