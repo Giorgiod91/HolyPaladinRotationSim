@@ -28,7 +28,7 @@ public class PaladinService {
     }
 
    public synchronized String runSimulation() {
-    // i took the latch part moslty from a boilerplate 
+    // i took the last part mostly from a boilerplate 
     // Start the timer
     holymoly.StartTimer();
 
@@ -46,6 +46,11 @@ public class PaladinService {
             results.append("Time is: ").append(holymoly.getTime()).append("\n");
             results.append("The Overall Damage is: ").append(holymoly.OverAllDamage()).append("\n");
             results.append("DPS damage per second: ").append(holymoly.OverAllDamage() / holymoly.getTime()).append("\n");
+            int holyshockdmg = holymoly.holyShock();
+            System.out.println("Holy Shock dealt: " + holyshockdmg);
+            results.append("Holy Shock Damage: ").append(holyshockdmg).append("\n");
+
+            
             if (holymoly.getTime() > 30) {
                 testTimer.cancel();
                 latch.countDown();  // Signal that simulation is complete then it lets the main thread to continue

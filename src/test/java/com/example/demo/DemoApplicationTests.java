@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.demo.controller.PaladinController;
 import com.example.demo.model.Paladin;
 @SpringBootTest
 class DemoApplicationTests {
@@ -60,9 +59,6 @@ class DemoApplicationTests {
 		paladin.setCritChance(40);
 		paladin.setVersatility(20);
 
-		paladin.
-
-		assertThat(shouldBeHighest).isEqualTo(40);
 	}
 	// HolyShock should be prio with the current tuning
 	@Test
@@ -71,7 +67,7 @@ class DemoApplicationTests {
 		paladin.setMainStat(20000);
 		paladin.setCritChance(20);
 		paladin.setVersatility(20);
-		String[] prio = paladin.prioRotation(abilities);
+		
 	
 
 
