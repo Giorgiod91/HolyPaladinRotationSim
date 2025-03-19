@@ -231,6 +231,19 @@ public class Paladin {
     }
 
 
+    // adding the 4 set bonus from Season 2 the war within 
+    public void fourSetBonus() {
+        int value1 = 0;
+
+        
+
+       
+    }
+
+
+
+
+
 
     //:TODO:: use some sorting algorithym to filter the needed values depending on the users need
     // trying to do this 
@@ -288,7 +301,8 @@ public class Paladin {
         System.out.println("Checking Holy Shock status...");
         if (!HolyShockOnCooldown) {
             System.out.println("Holy Shock is not on cooldown. Using it now...");
-            holyShock();
+            int holyshockdamage = holyShock();
+            System.out.println("holyShock dmg:  " + holyshockdamage);
         } else {
             System.out.println("Holy Shock is on cooldown.");
         }
@@ -721,6 +735,9 @@ public class Paladin {
             totalHolyShockDamage += (int) totalDamage;  
             totalDamageOne += (int) totalDamage;  
             holyShockOverAllDamage += (int) totalDamage;
+
+
+           
             
            
         }
@@ -771,14 +788,17 @@ public class Paladin {
         } else {
             System.out.println("No Holy Shock charges available.");
         }
+
+
+
+        return holyShockOverAllDamage;
     }
 
-    //System.out.println("overall Holy Shock dmg :" );
-    printStatementsToFilter.add("total Holy Shock damage: " + totalHolyShockDamage);
-    printStatementsToFilter.add("Overall Holy Shock damage: " + holyShockOverAllDamage);
     
+    // return the value so i can access that later to check the dmg 
+    return holyShockOverAllDamage;
       
-    return totalHolyShockDamage;
+    
    
 }
 

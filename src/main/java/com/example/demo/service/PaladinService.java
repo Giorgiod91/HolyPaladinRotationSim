@@ -64,6 +64,8 @@ public class PaladinService {
         Thread.currentThread().interrupt();
     }
 
+    System.out.println("Final Results:\n" + results.toString());
+
     return results.toString();
 }
 
