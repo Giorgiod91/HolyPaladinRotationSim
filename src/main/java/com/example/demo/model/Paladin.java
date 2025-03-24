@@ -568,7 +568,7 @@ public class Paladin {
         // Apply Dusk and Dawn buff if active
         if (duskAndDawnActive) {
             totalDamage *= 1.3; // Apply 30% additional damage
-            //it got another 30% buff
+            //it got another 30% buff 22.03.2025
             totalDamage *= 1.3;
             duskAndDawnActive = false; // Reset the buff after use
         }
