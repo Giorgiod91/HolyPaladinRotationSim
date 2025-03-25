@@ -86,4 +86,9 @@ public class PaladinService {
     public int getUsageCounter() {
         return usageCounter;
     }
+
+    public int getShieldDamage(){
+        return  holymoly.ShieldOfRighteous();
+
+    }
 }
