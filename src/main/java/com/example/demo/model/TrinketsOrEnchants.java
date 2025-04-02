@@ -141,7 +141,27 @@ public class TrinketsOrEnchants {
         buffTimer.schedule(buffTimerTask, 0, 2000);
     }
 
+    // another S2 trinket called mr pick me up https://www.wowhead.com/item=230186/mister-pick-me-up
+    // for simpliefing this method i will say the team is allways full health cause i cant access real time game data atm
+    public void MisterPickMeUp(Paladin paladin) {
+        int extraDamage = 0;
+        int procs = 3;
 
+        Timer bufTimer = new Timer();
+
+        TimerTask buffTimerTask = new TimerTask(){
+            @Override
+            public void run(){
+                
+                
+                
+
+            }
+
+        };
+        bufTimer.schedule(buffTimerTask, 6000);
+        
+    }
 
  
 

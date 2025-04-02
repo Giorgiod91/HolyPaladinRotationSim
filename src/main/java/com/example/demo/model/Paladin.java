@@ -485,8 +485,6 @@ public class Paladin {
 
         
 
-
-
     }
 
 
@@ -880,6 +878,11 @@ public class Paladin {
     public void setVersatility(int versatility) { this.versatility = versatility; }
     public void setCritChance(int critChance) { this.critChance = critChance; }
     public void setHasteChance(int hasteChance) { this.critChance = hasteChance; }
+
+    // setter for shield dmg
+  
+
+
     // setter for highest stat
     public void sethighestStat(int highestStat, int value) {
 

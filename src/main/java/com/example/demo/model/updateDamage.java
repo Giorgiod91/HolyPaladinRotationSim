@@ -1,7 +1,7 @@
 package com.example.demo.model;
 import com.example.demo.service.PaladinService;
-
-import getShieldDamage from paladinService;
+//::TODO: create and finish these for later use for now its hard coded updates 
+// Removed invalid import statement
 
 public class updateDamage {
 
@@ -20,7 +20,7 @@ public class updateDamage {
         totalDamage = paladinService.getShieldDamage();
         totalDamage *= modifier;
 
-        
+               
 
 
      

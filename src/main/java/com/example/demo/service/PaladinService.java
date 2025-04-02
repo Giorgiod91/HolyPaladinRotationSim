@@ -91,4 +91,8 @@ public class PaladinService {
         return  holymoly.ShieldOfRighteous();
 
     }
+
+    public void setShieldDamage(){
+        
+    }
 }
