@@ -119,6 +119,28 @@ public class TrinketsOrEnchants {
     }
 
 
+    // simple trinket that increases vers on proc
+    public void CarvedBlazikonWax(Paladin paladin) {
+        
+       int versatility = paladin.getVersatility();        
+       
+        Timer buffTimer = new Timer();
+
+        // TimerTask to increase main stat on ability use
+        TimerTask buffTimerTask = new TimerTask() {
+            @Override
+            public void run() {
+                // increase the versatility stat by 3790
+                paladin.setVersatility(versatility + 3970);
+                
+            }
+        };
+
+    
+        buffTimer.schedule(buffTimerTask, 0, 15000);
+    }
+
+
 
     public void SignetOfThePriory(Paladin paladin) {
         // get stats first cause this Trinket increased onClick the highest stat u have by a large amount
@@ -152,7 +174,7 @@ public class TrinketsOrEnchants {
         TimerTask buffTimerTask = new TimerTask(){
             @Override
             public void run(){
-                
+
                 
                 
 
