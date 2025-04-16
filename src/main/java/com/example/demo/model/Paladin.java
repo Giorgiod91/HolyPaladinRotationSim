@@ -52,6 +52,7 @@ public class Paladin {
     private boolean hasJustificationSkilled = false;
     private boolean spenderUsed = false;
     private boolean HolyPowerAbilityCasted = false;
+    private boolean JudgeMentConcecration = false;
 
 
     /// timers 
@@ -422,11 +423,13 @@ public class Paladin {
         }
         
         
-    }
+    }    
 
-     
+
+    
+
     //holyprism method
-    //TODO: add the prism aoe dmg !!!!
+    //TODO: add the prism aoe dmg !!!! 
     public void HolyPrism() {
         int baseDamage = (int) (mainStat * 2.16);
         // applying the buff from the latest patch notes holy prism got buffed by 100%
@@ -815,7 +818,17 @@ public class Paladin {
     
 
     // Simulate the Judgment ability
+    
     public int JudgeMent() {
+        // adding dmg modifier from patch 11.5 Righteous Judgment chance increased to 100% (was 50%).
+        JudgeMentConcecration = true;
+        if(JudgeMentConcecration == true){
+            Consecration();
+            JudgeMentConcecration = false;
+        }
+
+
+
         if (JudgmentOnCooldown) {
             System.out.println("Judgment is on cooldown!");
             return 0;  
