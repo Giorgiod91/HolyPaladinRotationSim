@@ -3,8 +3,9 @@
 ## Overview
 The Holy Paladin DPS Simulator is a Java-based backend tool designed to help World of Warcraft (WoW) players simulate and optimize their damage rotations for the Holy Paladin class. It allows users to input character stats and simulate real-world abilities, talents, and gear effects, ultimately providing recommendations on the best ability rotation and estimating Damage Per Second (DPS) output.
 
-# Release in Season2 TWW
+# Release in Season3 TWW  
 
+# Rewriting backend logic in python atm    https://github.com/Giorgiod91/paladinSim
 ## 🎥 Demo Video
 
 https://github.com/user-attachments/assets/a7d4d335-1f64-4ead-bc35-6919c3fa52e5
